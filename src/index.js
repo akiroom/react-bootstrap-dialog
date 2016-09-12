@@ -53,7 +53,7 @@ class Dialog extends React.Component {
     actions.forEach((action) => {
       if (action.key) {
         action.key.split(',').forEach((key) => {
-          keyBinds[key] = () => {action.func && action.func(this)}
+          keyBinds[key] = () => { action.func && action.func(this) }
         })
       }
     })
@@ -104,12 +104,13 @@ class Dialog extends React.Component {
     return (
       <Modal show={this.state.showModal} onHide={() => this.state.onHide && this.state.onHide()} bsSize={size}>
         {
-          this.state.title &&
-          <Modal.Header>
-            <Modal.Title>
-              {this.state.title}
-            </Modal.Title>
-          </Modal.Header>
+          this.state.title && (
+            <Modal.Header>
+              <Modal.Title>
+                {this.state.title}
+              </Modal.Title>
+            </Modal.Header>
+          )
         }
         <Modal.Body>
           {
@@ -122,11 +123,12 @@ class Dialog extends React.Component {
           {
             this.state.actions.map((action) => {
               return (
-                <button key={action.label}
-                        type='button'
-                        className={`btn btn-sm ${action.className}`}
-                        onClick={() => {action.func && action.func(this)}}
-                        style={{minWidth: 82}}>
+                <button
+                  key={action.label}
+                  type='button'
+                  className={`btn btn-sm ${action.className}`}
+                  onClick={() => { action.func && action.func(this) }}
+                  style={{minWidth: 82}}>
                   {action.label}
                 </button>
               )
