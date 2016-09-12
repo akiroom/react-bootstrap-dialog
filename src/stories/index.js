@@ -1,21 +1,20 @@
-import React from 'react';
-import { storiesOf, action } from '@kadira/storybook';
-import Button from '../index';
+import React from 'react'
+import { storiesOf, action } from '@kadira/storybook'
+import 'bootstrap/dist/css/bootstrap.css'
+import ShowAlert from './samples/ShowAlert'
+import ShowOkCancelDialog from './samples/ShowOkCancelDialog'
+import ShowWarningDialog from './samples/ShowWarningDialog'
+import ShowCustomDialog from './samples/ShowCustomDialog'
+import ShowDialogWithChangedOptions from './samples/ShowDialogWithChangedOptions'
 
-storiesOf('Button', module)
-  .add('default view', () => (
-    <Button onClick={ action('button clicked') }>Hello</Button>
+storiesOf('Dialog', module)
+  .addDecorator((story) => (
+    <div style={{margin: '20px'}}>
+      {story()}
+    </div>
   ))
-  .add('some emojies as the text', () => (
-    <Button>😀 😎 👍 💯</Button>
-  ))
-  .add('custom styles', () => {
-    const style = {
-      fontSize: 20,
-      textTransform: 'uppercase',
-      color: '#FF8833',
-    };
-    return (
-      <Button style={ style }>Hello</Button>
-    );
-  });
+  .add('show alert', () => (<ShowAlert />))
+  .add('show ok cancel dialog', () => (<ShowOkCancelDialog />))
+  .add('show warning dialog', () => (<ShowWarningDialog />))
+  .add('show custom dialog', () => (<ShowCustomDialog />))
+  .add('show dialog with changed options', () => (<ShowDialogWithChangedOptions />))
