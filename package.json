@@ -10,8 +10,7 @@
   "author": "akiroom (http://akiyama.akiroom.com/en/)",
   "scripts": {
     "prepublish": ". ./.scripts/prepublish.sh",
-    "lint": "eslint src",
-    "lintfix": "eslint src --fix",
+    "lint": "standard",
     "testonly": "mocha --require .scripts/mocha_runner src/**/tests/**/*.js",
     "test": "npm run lint && npm run testonly",
     "test-watch": "npm run testonly -- --watch --watch-extensions js",
@@ -23,7 +22,6 @@
     "@kadira/storybook": "^2.5.2",
     "babel-cli": "^6.5.0",
     "babel-core": "^6.5.0",
-    "babel-eslint": "^6.0.2",
     "babel-loader": "^6.2.4",
     "babel-plugin-transform-runtime": "^6.5.0",
     "babel-polyfill": "^6.5.0",
@@ -33,11 +31,6 @@
     "bootstrap": "^3.3.7",
     "chai": "^3.5.0",
     "enzyme": "^2.2.0",
-    "eslint": "^2.7.0",
-    "eslint-config-airbnb": "^7.0.0",
-    "eslint-plugin-babel": "^3.2.0",
-    "eslint-plugin-jsx-a11y": "^0.6.2",
-    "eslint-plugin-react": "^4.3.0",
     "git-url-parse": "^6.0.1",
     "jsdom": "^8.3.1",
     "mocha": "^2.4.5",
@@ -45,7 +38,8 @@
     "react-addons-test-utils": "^15.0.0",
     "react-bootstrap": "^0.30.3",
     "react-dom": "^15.0.0",
-    "sinon": "^1.17.3"
+    "sinon": "^1.17.3",
+    "standard": "^8.0.0"
   },
   "peerDependencies": {
     "react": "^0.14.7 || ^15.0.0"
