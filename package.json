@@ -1,12 +1,13 @@
 {
   "name": "react-bootstrap-dialog",
-  "version": "0.0.0",
-  "description": "React Bootstrap Dialog Component",
+  "version": "0.9.0",
+  "description": "The modal dialog component for React Bootstrap, alternates `window.confirm` and `window.alert`.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/you/repo.git"
+    "url": "https://github.com/akiroom/react-bootstrap-dialog.git"
   },
   "license": "MIT",
+  "author": "akiroom (http://akiyama.akiroom.com/en/)",
   "scripts": {
     "prepublish": ". ./.scripts/prepublish.sh",
     "lint": "eslint src",
