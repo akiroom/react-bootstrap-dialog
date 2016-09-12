@@ -1,9 +1,9 @@
-import React from 'react'
-import { shallow, mount } from 'enzyme'
-import Button from '../index'
-import { expect } from 'chai'
-import sinon from 'sinon'
-const { describe, it } = global
+// import React from 'react'
+// import { shallow, mount } from 'enzyme'
+// import Button from '../index'
+// import { expect } from 'chai'
+// import sinon from 'sinon'
+// const { describe, it } = global
 
 // TODO: write a test later😂
 // describe('Button', () => {
