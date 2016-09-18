@@ -18,7 +18,7 @@ class Dialog extends React.Component {
   }
 
   /**
-   * Reset options to defaults.
+   * Reset default options to presets.
    */
   static resetOptions () {
     Dialog.options = Dialog.DEFAULT_OPTIONS
@@ -77,7 +77,7 @@ class Dialog extends React.Component {
   /**
    * Show message dialog This is similar to `window.alert`.
    * @param body The body of message.
-   * @param options.bsSize {[null, 'medium', 'large', 'small']} The width size for dialog.
+   * @param bsSize {[null, 'medium', 'large', 'small']} The width size for dialog.
    */
   showAlert (body, bsSize = undefined) {
     const options = {
