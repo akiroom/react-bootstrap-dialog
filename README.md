@@ -153,7 +153,7 @@ Hide this dialog.
 this.refs.dialog.hide();
 ```
 
-### DialogAction generators
+### `<DialogAction />` generators
 
 #### Dialog.Action(label, func, className)
 
