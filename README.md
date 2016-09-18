@@ -78,12 +78,10 @@ export default class SampleCode extends React.Component {
 
 Set default options for applying to all dialogs
 
-- options: Object
-  - The parameters for default options.
-  - keys:
-    - `defaultOkLabel`
-    - `defaultCancelLabel`
-    - `primaryClassName`
+- `options`: [Object] The parameters for default options.
+  - `defaultOkLabel`: [String, Node] The default label for OK button. Default is `'OK'`.
+  - `defaultCancelLabel`: [String, Node] The default label for Cancel button. Default is `'Cancel'`.
+  - `primaryClassName`: [String] The class name for primary button. Default is `'btn-primary'`
 
 #### Example
 
