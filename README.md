@@ -4,6 +4,10 @@
 
 It's a dialog component for react-bootstrap, easy and configurable in your React application.
 
+- [Screenshots](#screenshots)
+- [Example](#example)
+- [Install](#install)
+- [Documents](#documents)
 
 ## Screenshots
 
