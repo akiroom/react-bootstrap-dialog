@@ -42,7 +42,7 @@ Step 3. Call `showAlert` method or `show` method.
 this.refs.dialog.showAlert('Hello Dialog!')
 ```
 
-This code is full code for the steps.
+This code is full code for these steps.
 
 ```js
 import React from 'react'
