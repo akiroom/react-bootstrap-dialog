@@ -229,7 +229,3 @@ Dialog.CancelAction(() => {
 // Do nothing.
 Dialog.CancelAction()
 ```
-
-#### Dialog.SingleOKAction()
-
-The OK choice to do nothing for `options.actions` in `dialog.show`.
