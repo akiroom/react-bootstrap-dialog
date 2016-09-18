@@ -42,7 +42,7 @@ import Dialog from 'react-bootstrap-dialog'
 this.refs.dialog.showAlert('Hello Dialog!')
 ```
 
-This codes is full codes for (1), (2), (3).
+This code is full code for (1), (2), (3).
 
 ```js
 import React from 'react'
