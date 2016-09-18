@@ -1,5 +1,6 @@
 # React Bootstrap Dialog
 
+[![npm version](https://badge.fury.io/js/react-bootstrap-dialog.svg)](https://badge.fury.io/js/react-bootstrap-dialog)
 [![Build Status](https://travis-ci.org/akiroom/react-bootstrap-dialog.svg?branch=master)](https://travis-ci.org/akiroom/react-bootstrap-dialog)
 
 It's a **Modal-dialog React component** based on `<Modal />` in [react-bootstrap](https://react-bootstrap.github.io/), It's configurable and easy to use instead of `window.alert` or `window.confirm` in your React application.
