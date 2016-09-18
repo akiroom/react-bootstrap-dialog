@@ -75,7 +75,7 @@ export default class SampleCode extends React.Component {
 
 ### Atrributes on `<Dialog />`
 
-You need to use only `ref` attribute, to call a function.
+You need to use only `ref` attribute, to call a dialog function.
 
 ### Functions on `<Dialog />`
 
