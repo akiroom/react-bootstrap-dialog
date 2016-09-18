@@ -24,25 +24,25 @@ npm i --save react-bootstrap-dialog
 ### Quick start
 
 
-(1) Import package.
+Step 1. Import package.
 
 ```js
 import Dialog from 'react-bootstrap-dialog'
 ```
 
-(2) Write jsx in `render` method.
+Step 2. Write jsx in `render` method.
 
 ```html
 <Dialog ref="dialog" />
 ```
 
-(3) Call `showAlert` method or `show` method.
+Step 3. Call `showAlert` method or `show` method.
 
 ```js
 this.refs.dialog.showAlert('Hello Dialog!')
 ```
 
-This code is full code for (1), (2), (3).
+This code is full code for the steps.
 
 ```js
 import React from 'react'
