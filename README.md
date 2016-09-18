@@ -82,6 +82,12 @@ export default class SampleCode extends React.Component {
 
 ## Documents
 
+Index:
+
+- [`Dialog`](#dialog)
+- [`<Dialog />`](#dialog-)
+- [`DialogAction` generators](#dialogaction-generators)
+
 ### `Dialog`
 
 #### setOptions(options)
