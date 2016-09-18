@@ -22,7 +22,7 @@ Instead of `window.confirm`
 
 ### Custom Dialog
 
-[![https://gyazo.com/3d327dc72e415088c942b4c28b5ff315](https://i.gyazo.com/3d327dc72e415088c942b4c28b5ff315.gif)](https://gyazo.com/3d327dc72e415088c942b4c28b5ff315)
+[![https://gyazo.com/d9c073c6c7d66c05e5398f386345f452](https://i.gyazo.com/d9c073c6c7d66c05e5398f386345f452.gif)](https://gyazo.com/d9c073c6c7d66c05e5398f386345f452)
 
 ## Install
 
