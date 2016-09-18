@@ -113,7 +113,7 @@ Show dialog with choices. This is similar to `window.confirm`.
 - `options`: [Object] The parameters for options.
    - `title`: [String, Node] The title of dialog.
    - `body`: [String, Node] The body of message.
-   - `actions`: [DialogAction] The choices for presenting to user.
+   - `actions`: [DialogAction] The choices for presenting to user. See [DialogAction generators](#dialogaction-generators)
    - `bsSize`: [String] The width size for dialog. You can choose in [null, 'medium', 'large', 'small'].
 
 ##### Example
