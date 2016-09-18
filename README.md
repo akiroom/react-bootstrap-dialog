@@ -8,19 +8,19 @@ See [Demo storybook](https://akiroom.github.io/react-bootstrap-dialog/)
 
 ## Screenshots
 
-** Default alert**
+**Default alert**
 
 Instead of `window.alert`
 
 [![https://gyazo.com/5de08d0ecea2785fbc68c16cf6208f5e](https://i.gyazo.com/5de08d0ecea2785fbc68c16cf6208f5e.gif)](https://gyazo.com/5de08d0ecea2785fbc68c16cf6208f5e)
 
-** Default dialog**
+**Default dialog**
 
 Instead of `window.confirm`
 
 [![https://gyazo.com/692770a97d1181e7c11cfe3687ad1bbf](https://i.gyazo.com/692770a97d1181e7c11cfe3687ad1bbf.gif)](https://gyazo.com/692770a97d1181e7c11cfe3687ad1bbf)
 
-** Customized dialog**
+**Customized dialog**
 
 [![https://gyazo.com/3d327dc72e415088c942b4c28b5ff315](https://i.gyazo.com/3d327dc72e415088c942b4c28b5ff315.gif)](https://gyazo.com/3d327dc72e415088c942b4c28b5ff315)
 
