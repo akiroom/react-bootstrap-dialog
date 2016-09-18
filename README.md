@@ -102,3 +102,24 @@ Reset default options to presets.
 ```js
 Dialog.resetOptions()
 ```
+
+### show(options)
+
+Show dialog with choices. This is similar to `window.confirm`.
+
+- `options`: [Object] The parameters for options.
+   - `title`: [String, Node] The title of dialog.
+   - `body`: [String, Node] The body of message.
+   - `actions`: [DialogAction] The choices for presenting to user.
+   - `bsSize`: [String] The width size for dialog. You can choose in [null, 'medium', 'large', 'small'].
+
+#### Example
+
+this.refs.dialog.show({
+  title: 'Greedings',
+  body: 'How are you?',
+  actions: [
+    Dialog.CancelAction(),
+    Dialog.OKAction()
+  ]
+})
