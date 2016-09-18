@@ -21,6 +21,8 @@ npm i react-bootstrap-dialog --save
 
 ## Usage
 
+See [stories/samples](https://github.com/akiroom/react-bootstrap-dialog/tree/master/src/stories/samples)
+
 ### Quick start
 
 Step 1. Import package.
@@ -71,5 +73,3 @@ export default class SampleCode extends React.Component {
 ```
 
 ### Full sample
-
-See [stories/samples](https://github.com/akiroom/react-bootstrap-dialog/tree/master/src/stories/samples)
