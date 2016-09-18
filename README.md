@@ -73,9 +73,34 @@ export default class SampleCode extends React.Component {
 
 ## Documents
 
-### Atrributes on `<Dialog />`
 
-You need to use only `ref` attribute, to call a dialog function.
+### setOptions(options)
 
-### Functions on `<Dialog />`
+Set default options for applying to all dialogs
 
+- options: Object
+  - The parameters for default options.
+  - keys:
+    - `defaultOkLabel`
+    - `defaultCancelLabel`
+    - `primaryClassName`
+
+#### Example
+
+```js
+Dialog.setOptions({
+  defaultOkLabel: 'Yes! Yes! Yes!',
+  defaultCancelLabel: 'Noooooooo!!',
+  primaryClassName: 'btn-success'
+})
+```
+
+### resetOptions()
+
+Reset default options to presets.
+
+#### Example
+
+```js
+Dialog.resetOptions()
+```
