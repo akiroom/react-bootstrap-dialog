@@ -115,6 +115,7 @@ Show dialog with choices. This is similar to `window.confirm`.
 
 #### Example
 
+```js
 this.refs.dialog.show({
   title: 'Greedings',
   body: 'How are you?',
@@ -123,3 +124,4 @@ this.refs.dialog.show({
     Dialog.OKAction()
   ]
 })
+```
