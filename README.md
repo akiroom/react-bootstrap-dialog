@@ -27,7 +27,7 @@ npm i react-bootstrap-dialog --save
 Step 1. Import package.
 
 ```js
-import Dialog from 'react-bootstrap-dialog'
+import Dialog from 'react-bootstrap-dialog';
 ```
 
 Step 2. Write jsx in `render` method.
@@ -39,24 +39,24 @@ Step 2. Write jsx in `render` method.
 Step 3. Call `showAlert` method or `show` method.
 
 ```js
-this.refs.dialog.showAlert('Hello Dialog!')
+this.refs.dialog.showAlert('Hello Dialog!');
 ```
 
 This code is full code for these steps.
 
 ```js
-import React from 'react'
-import {Button} from 'react-bootstrap'
-import Dialog from 'react-bootstrap-dialog'
+import React from 'react';
+import {Button} from 'react-bootstrap';
+import Dialog from 'react-bootstrap-dialog';
 
 export default class SampleCode extends React.Component {
   constructor () {
     super()
-    this.onClick = this.onClick.bind(this)
+    this.onClick = this.onClick.bind(this);
   }
 
   onClick () {
-    this.refs.dialog.showAlert('Hello Dialog!')
+    this.refs.dialog.showAlert('Hello Dialog!');
   }
 
   render () {
@@ -90,7 +90,7 @@ Dialog.setOptions({
   defaultOkLabel: 'Yes! Yes! Yes!',
   defaultCancelLabel: 'Noooooooo!!',
   primaryClassName: 'btn-success'
-})
+});
 ```
 
 ### resetOptions()
@@ -100,7 +100,7 @@ Reset default options to presets.
 #### Example
 
 ```js
-Dialog.resetOptions()
+Dialog.resetOptions();
 ```
 
 ### show(options)
@@ -124,5 +124,18 @@ this.refs.dialog.show({
     Dialog.OKAction()
   ],
   bsSize: 'small'
-})
+});
+```
+
+### showAlert(body, bsSize = undefined)
+
+Show message dialog This is similar to `window.alert`.
+
+- `body`: [String, Node] The body of message.
+- `bsSize`: [String] The width size for dialog. You can choose in [null, 'medium', 'large', 'small'].
+
+#### Example
+
+```js
+this.refs.dialog.showAlert('Hello world!');
 ```
