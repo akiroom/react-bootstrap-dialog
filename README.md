@@ -139,3 +139,13 @@ Show message dialog This is similar to `window.alert`.
 ```js
 this.refs.dialog.showAlert('Hello world!');
 ```
+
+### hide()
+
+Hide this dialog.
+
+#### Example
+
+```js
+this.refs.dialog.hide();
+```
