@@ -8,7 +8,7 @@ Index:
 
 - [Screenshots](#screenshots)
 - [Example](#example)
-- [Install](#install)
+- [Usage](#usage)
 - [Documents](#documents)
 
 ## Screenshots
@@ -23,7 +23,10 @@ Index:
 - See [Demos on storybook](https://akiroom.github.io/react-bootstrap-dialog/)
 - The example codes are in [/src/stories/samples](https://github.com/akiroom/react-bootstrap-dialog/tree/master/src/stories/samples)
 
-## Install 
+## Usage
+
+### Install
+
 ```sh
 npm i react-bootstrap-dialog --save
 ```
