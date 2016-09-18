@@ -4,6 +4,8 @@
 
 It's a dialog component for react-bootstrap, easy and configurable in your React application.
 
+Index:
+
 - [Screenshots](#screenshots)
 - [Example](#example)
 - [Install](#install)
