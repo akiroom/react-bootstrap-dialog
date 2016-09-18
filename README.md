@@ -152,3 +152,37 @@ Hide this dialog.
 ```js
 this.refs.dialog.hide();
 ```
+
+#### Dialog.Action(label, func, className)
+
+The customized choice for `options.actions` in `dialog.show`.
+
+- `label`: [String, Node] The label for the button.
+- `func`: [Function] The method to call when the button is clicked.
+- `className`: The class name for the button.
+
+#### Dialog.DefaultAction(label, func, className)
+
+The default choice for `options.actions` in `dialog.show`.
+
+- `label`: [String, Node] The label for the button.
+- `func`: [Function] The method to call when the button is clicked.
+- `className`: The class name for the button. (Default is `'btn-primary'`)
+
+#### Dialog.OKAction(func)
+
+The OK choice for `options.actions` in `dialog.show`.
+It uses default ok label (`'OK'`) and default primary class (`'btn-primary'`).
+
+- `func`: [Function] The method to call when the button is clicked.
+
+#### Dialog.CancelAction(func)
+
+The Cancel choice for `options.actions` in `dialog.show`.
+It uses default cancel label (`'Cancel'`).
+
+- `func`: [Function] The method to call when the button is clicked.
+
+#### Dialog.SingleOKAction()
+
+The OK choice to do nothing for `options.actions` in `dialog.show`.
