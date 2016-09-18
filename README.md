@@ -200,12 +200,35 @@ It uses default ok label (`'OK'`) and default primary class (`'btn-primary'`).
 
 - `func`: [Function] The method to call when the button is clicked.
 
+##### Example
+
+```js
+Dialog.OKAction(() => {
+  console.log('OK was clicked!')
+})
+```
+
 #### Dialog.CancelAction(func)
 
 The Cancel choice for `options.actions` in `dialog.show`.
 It uses default cancel label (`'Cancel'`).
 
 - `func`: [Function] The method to call when the button is clicked.
+
+##### Example 1
+
+```js
+Dialog.CancelAction(() => {
+  console.log('Cancel was clicked!')
+})
+```
+
+##### Example 2
+
+```js
+// Do nothing.
+Dialog.CancelAction()
+```
 
 #### Dialog.SingleOKAction()
 
