@@ -1,4 +1,4 @@
-# React Bootstrap Dialog Component
+# React Bootstrap Dialog
 
 [![Build Status](https://travis-ci.org/akiroom/react-bootstrap-dialog.svg?branch=master)](https://travis-ci.org/akiroom/react-bootstrap-dialog)
 
