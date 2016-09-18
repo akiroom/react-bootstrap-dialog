@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/akiroom/react-bootstrap-dialog.svg?branch=master)](https://travis-ci.org/akiroom/react-bootstrap-dialog)
 
-It's a **Modal-dialog React component** based on `<Modal />` in [react-bootstrap](https://react-bootstrap.github.io/), easy and configurable in your React application.
+It's a **Modal-dialog React component** based on `<Modal />` in [react-bootstrap](https://react-bootstrap.github.io/), It's configurable and easy to use instead of `window.alert` or `window.confirm` in your React application.
 
 Index:
 
