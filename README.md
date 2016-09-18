@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/akiroom/react-bootstrap-dialog.svg?branch=master)](https://travis-ci.org/akiroom/react-bootstrap-dialog)
 
-It's a dialog component for react-bootstrap. It's a configurable and easy in your React application.
+It's a dialog component for react-bootstrap. It's a easy and configurable in your React application.
 
 
 ## Screenshots
