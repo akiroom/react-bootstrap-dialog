@@ -73,8 +73,9 @@ export default class SampleCode extends React.Component {
 
 ## Documents
 
+### `Dialog`
 
-### setOptions(options)
+#### setOptions(options)
 
 Set default options for applying to all dialogs
 
@@ -83,7 +84,7 @@ Set default options for applying to all dialogs
   - `defaultCancelLabel`: [String, Node] The default label for Cancel button. Default is `'Cancel'`.
   - `primaryClassName`: [String] The class name for primary button. Default is `'btn-primary'`
 
-#### Example
+##### Example
 
 ```js
 Dialog.setOptions({
@@ -93,17 +94,19 @@ Dialog.setOptions({
 });
 ```
 
-### resetOptions()
+#### resetOptions()
 
 Reset default options to presets.
 
-#### Example
+##### Example
 
 ```js
 Dialog.resetOptions();
 ```
 
-### show(options)
+### `<Dialog />`
+
+#### show(options)
 
 Show dialog with choices. This is similar to `window.confirm`.
 
@@ -113,7 +116,7 @@ Show dialog with choices. This is similar to `window.confirm`.
    - `actions`: [DialogAction] The choices for presenting to user.
    - `bsSize`: [String] The width size for dialog. You can choose in [null, 'medium', 'large', 'small'].
 
-#### Example
+##### Example
 
 ```js
 this.refs.dialog.show({
@@ -127,24 +130,24 @@ this.refs.dialog.show({
 });
 ```
 
-### showAlert(body, bsSize = undefined)
+#### showAlert(body, bsSize = undefined)
 
 Show message dialog This is similar to `window.alert`.
 
 - `body`: [String, Node] The body of message.
 - `bsSize`: [String] The width size for dialog. You can choose in [null, 'medium', 'large', 'small'].
 
-#### Example
+##### Example
 
 ```js
 this.refs.dialog.showAlert('Hello world!');
 ```
 
-### hide()
+#### hide()
 
 Hide this dialog.
 
-#### Example
+##### Example
 
 ```js
 this.refs.dialog.hide();
