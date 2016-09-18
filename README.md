@@ -122,6 +122,7 @@ this.refs.dialog.show({
   actions: [
     Dialog.CancelAction(),
     Dialog.OKAction()
-  ]
+  ],
+  bsSize: 'small'
 })
 ```
