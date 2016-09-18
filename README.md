@@ -7,7 +7,7 @@ It's a **Dialog** component for React, based on `<Modal />` in react-bootstrap. 
 Index:
 
 - [Screenshots](#screenshots)
-- [Example](#example)
+- [Demo and Sample](#demo-and-sample)
 - [Usage](#usage)
 - [Documents](#documents)
 
