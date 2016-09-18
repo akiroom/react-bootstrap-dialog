@@ -18,7 +18,7 @@ Instead of `window.alert`
 
 Instead of `window.confirm`
 
-[![https://gyazo.com/692770a97d1181e7c11cfe3687ad1bbf](https://i.gyazo.com/692770a97d1181e7c11cfe3687ad1bbf.gif)](https://gyazo.com/692770a97d1181e7c11cfe3687ad1bbf)
+[![https://gyazo.com/f8e8bfd41d9c652a55ed06a0828dc57e](https://i.gyazo.com/f8e8bfd41d9c652a55ed06a0828dc57e.gif)](https://gyazo.com/f8e8bfd41d9c652a55ed06a0828dc57e)
 
 ### Customized dialog
 
