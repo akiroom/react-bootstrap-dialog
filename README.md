@@ -18,10 +18,10 @@ Index:
 | Instead of `window.alert` | Instead of `window.confirm` | Full customized |
 | [![https://gyazo.com/84e315aca42ac4dbe39e51ce3451bb53](https://i.gyazo.com/84e315aca42ac4dbe39e51ce3451bb53.gif)](https://gyazo.com/84e315aca42ac4dbe39e51ce3451bb53) | [![https://gyazo.com/f8e8bfd41d9c652a55ed06a0828dc57e](https://i.gyazo.com/f8e8bfd41d9c652a55ed06a0828dc57e.gif)](https://gyazo.com/f8e8bfd41d9c652a55ed06a0828dc57e) | [![https://gyazo.com/d9c073c6c7d66c05e5398f386345f452](https://i.gyazo.com/d9c073c6c7d66c05e5398f386345f452.gif)](https://gyazo.com/d9c073c6c7d66c05e5398f386345f452) |
 
-## Example
+## Demo and Sample
 
 - See [Demos on storybook](https://akiroom.github.io/react-bootstrap-dialog/)
-- The example codes are in [/src/stories/samples](https://github.com/akiroom/react-bootstrap-dialog/tree/master/src/stories/samples)
+- The sample codes are in [/src/stories/samples](https://github.com/akiroom/react-bootstrap-dialog/tree/master/src/stories/samples)
 
 ## Usage
 
