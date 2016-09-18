@@ -16,13 +16,12 @@ See [Demo storybook](https://akiroom.github.io/react-bootstrap-dialog/)
 ## Install
 
 ```sh
-npm i --save react-bootstrap-dialog
+npm i react-bootstrap-dialog --save
 ```
 
 ## Usage
 
 ### Quick start
-
 
 Step 1. Import package.
 
