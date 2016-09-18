@@ -181,6 +181,18 @@ The default choice for `options.actions` in `dialog.show`.
 - `func`: [Function] The method to call when the button is clicked.
 - `className`: The class name for the button. (Default is `'btn-primary'`)
 
+##### Example
+
+```js
+Dialog.DefaultAction(
+  'Remove',
+  () => {
+    console.log('Remove action will be executed!')
+  },
+  'btn-danger'
+)
+```
+
 #### Dialog.OKAction(func)
 
 The OK choice for `options.actions` in `dialog.show`.
