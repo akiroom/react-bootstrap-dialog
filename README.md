@@ -53,6 +53,35 @@ import Dialog from 'react-bootstrap-dialog'
 this.refs.dialog.showAlert('Hello Dialog!')
 ```
 
+This codes is full codes for (1), (2), (3).
+
+```js
+import React from 'react'
+import {Button} from 'react-bootstrap'
+import Dialog from 'react-bootstrap-dialog'
+
+export default class SampleCode extends React.Component {
+  constructor () {
+    super()
+    this.onClick = this.onClick.bind(this)
+  }
+
+  onClick () {
+    this.refs.dialog.showAlert('Hello Dialog!')
+  }
+
+  render () {
+    return (
+      <div>
+        <Button onClick={this.onClick}>Show alert</Button>
+        <Dialog ref='dialog' />
+      </div>
+    )
+  }
+}
+
+```
+
 ### Full sample
 
 See [stories/samples](https://github.com/akiroom/react-bootstrap-dialog/tree/master/src/stories/samples)
