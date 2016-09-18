@@ -70,3 +70,11 @@ export default class SampleCode extends React.Component {
 }
 
 ```
+
+## Documents
+
+### Atrributes on <Dialog />
+
+
+### Functions on <Dialog /> 
+
