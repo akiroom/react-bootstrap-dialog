@@ -16,4 +16,10 @@ See [feross/standard](https://github.com/feross/standard).
 
 We use [storybook-deployer](https://github.com/kadirahq/storybook-deployer)
 
-Run `npm run deploy-storybook` to deploy storybook on [gh-pages branch](https://pages.github.com/).
+Run `npm run publish-storybook` to deploy storybook on [gh-pages branch](https://pages.github.com/).
+
+## Publish
+
+```sh
+npm publish
+```
