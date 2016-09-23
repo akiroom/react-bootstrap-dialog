@@ -68,7 +68,14 @@ class Dialog extends React.Component {
           if (e.target === modal) {
             this.hide()
           }
-        })
+        });
+		if (options["onHide"] && typeof options["onHide"] === "function") {
+		   modal.addEventListener('click', function (e) {
+			if (e.target === modal) {
+			  options["onHide"]();
+	        }
+		  });
+		}
       }
     }, 100)
   }
