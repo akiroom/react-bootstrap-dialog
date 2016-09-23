@@ -12,6 +12,10 @@ We are going on standard.js
 
 See [feross/standard](https://github.com/feross/standard).
 
+## Preview on Storybook
+
+Run `npm run storybook`.
+
 ## Deploy Storybook
 
 We use [storybook-deployer](https://github.com/kadirahq/storybook-deployer)

@@ -131,6 +131,7 @@ Show dialog with choices. This is similar to `window.confirm`.
    - `body`: [String, Node] The body of message.
    - `actions`: [Array[DialogAction]] The choices for presenting to user. See [DialogAction generators](#dialogaction-generators)
    - `bsSize`: [String] The width size for dialog. You can choose in [null, 'medium', 'large', 'small'].
+   - `onHide`: [Function] The method to call when the dialog was closed by clicking background.
 
 ##### Example
 
@@ -142,7 +143,11 @@ this.refs.dialog.show({
     Dialog.CancelAction(),
     Dialog.OKAction()
   ],
-  bsSize: 'small'
+  bsSize: 'small',
+  onHide: (dialog) => {
+    dialog.hide()
+    console.log('closed by clicking background.')
+  }
 })
 ```
 

@@ -28,8 +28,10 @@ class Dialog extends React.Component {
     this.state = {
       showModal: false,
       actions: [],
-      bsSize: undefined
+      bsSize: undefined,
+      onHide: null
     }
+    this.onHide = this.onHide.bind(this)
   }
 
   componentWillUnmount () {
@@ -45,6 +47,7 @@ class Dialog extends React.Component {
    * @param options.body The body of message.
    * @param options.actions {DialogAction} The choices for presenting to user.
    * @param options.bsSize {[null, 'medium', 'large', 'small']} The width size for dialog.
+   * @param options.onHide {function} The method to call when the dialog was closed by clicking background.
    */
   show (options = {}) {
     let keyBinds = {}
@@ -59,25 +62,6 @@ class Dialog extends React.Component {
     // TODO: Add keybinds
     options['showModal'] = true
     this.setState(options)
-
-    // MEMO: This might be bad hack. The `backdrop` attr for `Modal` in ReactBootstrap can not be enabled...
-    setTimeout(() => {
-      const modal = document.getElementsByClassName('modal')[0]
-      if (modal) {
-        modal.addEventListener('click', (e) => {
-          if (e.target === modal) {
-            this.hide()
-          }
-        });
-		if (options["onHide"] && typeof options["onHide"] === "function") {
-		   modal.addEventListener('click', function (e) {
-			if (e.target === modal) {
-			  options["onHide"]();
-	        }
-		  });
-		}
-      }
-    }, 100)
   }
 
   /**
@@ -96,6 +80,15 @@ class Dialog extends React.Component {
     this.show(options)
   }
 
+  onHide () {
+    const onHide = this.state.onHide
+    if (typeof onHide === 'function') {
+      onHide(this)
+    } else {
+      this.hide()
+    }
+  }
+
   /**
    * Hide this dialog.
    */
@@ -108,7 +101,7 @@ class Dialog extends React.Component {
   render () {
     const size = (typeof this.state.bsSize) === 'undefined' ? 'small' : (this.state.bsSize === 'medium' ? null : this.state.bsSize)
     return (
-      <Modal show={this.state.showModal} onHide={() => this.state.onHide && this.state.onHide()} bsSize={size}>
+      <Modal show={this.state.showModal} onHide={this.onHide} bsSize={size}>
         {
           this.state.title && (
             <Modal.Header>
