@@ -1,5 +1,5 @@
 import React from 'react'
-import { storiesOf } from '@kadira/storybook'
+import { storiesOf } from '@storybook/react'
 import 'bootstrap/dist/css/bootstrap.css'
 import ShowAlert from './samples/ShowAlert'
 import ShowOkCancelDialog from './samples/ShowOkCancelDialog'

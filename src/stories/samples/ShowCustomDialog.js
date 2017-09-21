@@ -1,7 +1,7 @@
+import { action } from '@storybook/addon-actions'
 import React from 'react'
 import {Button, Glyphicon} from 'react-bootstrap'
 import Dialog from '../../index'
-import { action } from '@kadira/storybook'
 
 export default class ShowCustomDialog extends React.Component {
   constructor () {
