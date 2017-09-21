@@ -1,7 +1,7 @@
+import { action } from '@storybook/addon-actions'
 import React from 'react'
 import {Button} from 'react-bootstrap'
 import Dialog from '../../index'
-import { action } from '@kadira/storybook'
 
 export default class ShowWithOnHide extends React.Component {
   constructor () {
@@ -11,7 +11,7 @@ export default class ShowWithOnHide extends React.Component {
   }
 
   onClickWithOnHide () {
-    this.refs.dialog.show({
+    this.dialog.show({
       body: 'Hello.',
       actions: [
         Dialog.CancelAction(),
@@ -25,7 +25,7 @@ export default class ShowWithOnHide extends React.Component {
   }
 
   onClickWithPreventBackground () {
-    this.refs.dialog.show({
+    this.dialog.show({
       body: 'Hello.',
       actions: [
         Dialog.CancelAction(),
@@ -47,7 +47,7 @@ export default class ShowWithOnHide extends React.Component {
           <Button onClick={this.onClickWithPreventBackground}>Show dialog with preventing closing by clicking background</Button>
         </p>
 
-        <Dialog ref='dialog' />
+        <Dialog ref={(el) => { this.dialog = el }} />
       </div>
     )
   }

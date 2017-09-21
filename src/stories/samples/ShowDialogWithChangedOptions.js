@@ -1,7 +1,7 @@
+import { action } from '@storybook/addon-actions'
 import React from 'react'
 import {Button} from 'react-bootstrap'
 import Dialog from '../../index'
-import { action } from '@kadira/storybook'
 
 export default class ShowDialogWithChangedOptions extends React.Component {
   constructor () {
@@ -22,7 +22,7 @@ export default class ShowDialogWithChangedOptions extends React.Component {
   }
 
   onClickOkCancel () {
-    this.refs.dialog.show({
+    this.dialog.show({
       body: 'Ok button has handler.',
       actions: [
         Dialog.CancelAction(),
@@ -43,7 +43,7 @@ export default class ShowDialogWithChangedOptions extends React.Component {
           <Button onClick={this.onClickOkCancel}>Show ok cancel dialog</Button>
         </p>
 
-        <Dialog ref='dialog' />
+        <Dialog ref={(el) => { this.dialog = el }} />
       </div>
     )
   }
