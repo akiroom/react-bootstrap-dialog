@@ -10,7 +10,7 @@ export default class ShowWarningDialog extends React.Component {
   }
 
   onClick () {
-    this.refs.dialog.show({
+    this.dialog.show({
       body: 'Sample for dangerous operation (this sample does nothing).',
       actions: [
         Dialog.CancelAction(),
@@ -31,7 +31,7 @@ export default class ShowWarningDialog extends React.Component {
         <p>
           <Button onClick={this.onClick}>Show warning dialog</Button>
         </p>
-        <Dialog ref='dialog' />
+        <Dialog ref={(el) => this.dialog = el} />
       </div>
     )
   }

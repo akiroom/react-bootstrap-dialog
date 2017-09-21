@@ -3,9 +3,9 @@ import {Modal} from 'react-bootstrap'
 
 /**
  * The modal dialog which can be altenative to `window.confirm` and `window.alert`.
- * @example <Dialog ref='dialog'/>
- * @example this.refs.dialog.show({body: 'Hello!', actions: [Dialog.Action('do', () => console.log('ok'))]})
- * @example this.refs.dialog.showAlert('Hello!')
+ * @example <Dialog ref={(el) => {this.dialog = el} />
+ * @example this.dialog.show({body: 'Hello!', actions: [Dialog.Action('do', () => console.log('ok'))]})
+ * @example this.dialog.showAlert('Hello!')
  */
 class Dialog extends React.Component {
   /**

@@ -22,7 +22,7 @@ export default class ShowDialogWithChangedOptions extends React.Component {
   }
 
   onClickOkCancel () {
-    this.refs.dialog.show({
+    this.dialog.show({
       body: 'Ok button has handler.',
       actions: [
         Dialog.CancelAction(),
@@ -43,7 +43,7 @@ export default class ShowDialogWithChangedOptions extends React.Component {
           <Button onClick={this.onClickOkCancel}>Show ok cancel dialog</Button>
         </p>
 
-        <Dialog ref='dialog' />
+        <Dialog ref={(el) => this.dialog = el} />
       </div>
     )
   }

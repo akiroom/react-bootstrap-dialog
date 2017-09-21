@@ -7,15 +7,15 @@ export default class ShowAlert extends React.Component {
   constructor () {
     super()
     this.onClick = this.onClick.bind(this)
-    this.onClickWithHandler = this.onClickWithHandler.bind(this)
+    this.onClickWithEventHandler = this.onClickWithEventHandler.bind(this)
   }
 
   onClick () {
-    this.refs.dialog.showAlert('Hello Dialog!')
+    this.dialog.showAlert('Hello Dialog!')
   }
 
-  onClickWithHandler () {
-    this.refs.dialog.show({
+  onClickWithEventHandler () {
+    this.dialog.show({
       body: 'Take it easy.',
       actions: [
         Dialog.OKAction(() => {
@@ -32,10 +32,10 @@ export default class ShowAlert extends React.Component {
           <Button onClick={this.onClick}>Show alert</Button>
         </p>
         <p>
-          <Button onClick={this.onClickWithHandler}>Show alert with handler</Button>
+          <Button onClick={this.onClickWithEventHandler}>Show alert with event handler</Button>
         </p>
 
-        <Dialog ref='dialog' />
+        <Dialog ref={(el) => this.dialog = el} />
       </div>
     )
   }

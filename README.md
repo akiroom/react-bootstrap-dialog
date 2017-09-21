@@ -43,13 +43,13 @@ import Dialog from 'react-bootstrap-dialog'
 Step 2. Write jsx in `render` method.
 
 ```html
-<Dialog ref="dialog" />
+<Dialog ref={(el) => this.dialog = el} />
 ```
 
 Step 3. Call `showAlert` method or `show` method.
 
 ```js
-this.refs.dialog.showAlert('Hello Dialog!')
+this.dialog.showAlert('Hello Dialog!')
 ```
 
 This code is full code for these steps.
@@ -66,14 +66,14 @@ export default class SampleCode extends React.Component {
   }
 
   onClick () {
-    this.refs.dialog.showAlert('Hello Dialog!')
+    this.dialog.showAlert('Hello Dialog!')
   }
 
   render () {
     return (
       <div>
         <Button onClick={this.onClick}>Show alert</Button>
-        <Dialog ref='dialog' />
+        <Dialog ref={(el) => this.dialog = el} />
       </div>
     )
   }
@@ -136,7 +136,7 @@ Show dialog with choices. This is similar to `window.confirm`.
 ##### Example
 
 ```js
-this.refs.dialog.show({
+this.dialog.show({
   title: 'Greedings',
   body: 'How are you?',
   actions: [
@@ -161,7 +161,7 @@ Show message dialog This is similar to `window.alert`.
 ##### Example
 
 ```js
-this.refs.dialog.showAlert('Hello world!')
+this.dialog.showAlert('Hello world!')
 ```
 
 #### hide()
@@ -171,7 +171,7 @@ Hide this dialog.
 ##### Example
 
 ```js
-this.refs.dialog.hide()
+this.dialog.hide()
 ```
 
 ### `DialogAction` generators

@@ -11,7 +11,7 @@ export default class ShowOkCancelDialog extends React.Component {
   }
 
   onClickOkCancel () {
-    this.refs.dialog.show({
+    this.dialog.show({
       body: 'Ok button has handler.',
       actions: [
         Dialog.CancelAction(),
@@ -23,7 +23,7 @@ export default class ShowOkCancelDialog extends React.Component {
   }
 
   onClickOkCancelWithHandler () {
-    this.refs.dialog.show({
+    this.dialog.show({
       body: 'Ok button and cancel button have handlers',
       actions: [
         Dialog.CancelAction(() => {
@@ -46,7 +46,7 @@ export default class ShowOkCancelDialog extends React.Component {
           <Button onClick={this.onClickOkCancelWithHandler}>Show ok cancel dialog with cancel handler</Button>
         </p>
 
-        <Dialog ref='dialog' />
+        <Dialog ref={(el) => this.dialog = el} />
       </div>
     )
   }
