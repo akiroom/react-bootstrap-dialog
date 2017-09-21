@@ -43,7 +43,7 @@ import Dialog from 'react-bootstrap-dialog'
 Step 2. Write jsx in `render` method.
 
 ```html
-<Dialog ref={(el) => this.dialog = el} />
+<Dialog ref={(el) => { this.dialog = el }} />
 ```
 
 Step 3. Call `showAlert` method or `show` method.
@@ -73,7 +73,7 @@ export default class SampleCode extends React.Component {
     return (
       <div>
         <Button onClick={this.onClick}>Show alert</Button>
-        <Dialog ref={(el) => this.dialog = el} />
+        <Dialog ref={(el) => { this.dialog = el }} />
       </div>
     )
   }

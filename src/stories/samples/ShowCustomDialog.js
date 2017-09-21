@@ -53,7 +53,7 @@ export default class ShowCustomDialog extends React.Component {
         <p>
           <Button onClick={this.onClick}>Show custom dialog</Button>
         </p>
-        <Dialog ref={(el) => this.dialog = el} />
+        <Dialog ref={(el) => { this.dialog = el }} />
       </div>
     )
   }

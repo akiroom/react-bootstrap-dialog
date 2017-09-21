@@ -31,7 +31,7 @@ export default class ShowWarningDialog extends React.Component {
         <p>
           <Button onClick={this.onClick}>Show warning dialog</Button>
         </p>
-        <Dialog ref={(el) => this.dialog = el} />
+        <Dialog ref={(el) => { this.dialog = el }} />
       </div>
     )
   }

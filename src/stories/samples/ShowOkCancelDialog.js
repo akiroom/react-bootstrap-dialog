@@ -46,7 +46,7 @@ export default class ShowOkCancelDialog extends React.Component {
           <Button onClick={this.onClickOkCancelWithHandler}>Show ok cancel dialog with cancel handler</Button>
         </p>
 
-        <Dialog ref={(el) => this.dialog = el} />
+        <Dialog ref={(el) => { this.dialog = el }} />
       </div>
     )
   }

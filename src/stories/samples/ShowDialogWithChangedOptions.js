@@ -43,7 +43,7 @@ export default class ShowDialogWithChangedOptions extends React.Component {
           <Button onClick={this.onClickOkCancel}>Show ok cancel dialog</Button>
         </p>
 
-        <Dialog ref={(el) => this.dialog = el} />
+        <Dialog ref={(el) => { this.dialog = el }} />
       </div>
     )
   }

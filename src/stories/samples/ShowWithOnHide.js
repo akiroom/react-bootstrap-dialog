@@ -47,7 +47,7 @@ export default class ShowWithOnHide extends React.Component {
           <Button onClick={this.onClickWithPreventBackground}>Show dialog with preventing closing by clicking background</Button>
         </p>
 
-        <Dialog ref={(el) => this.dialog = el} />
+        <Dialog ref={(el) => { this.dialog = el }} />
       </div>
     )
   }

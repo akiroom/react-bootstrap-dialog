@@ -35,7 +35,7 @@ export default class ShowAlert extends React.Component {
           <Button onClick={this.onClickWithEventHandler}>Show alert with event handler</Button>
         </p>
 
-        <Dialog ref={(el) => this.dialog = el} />
+        <Dialog ref={(el) => { this.dialog = el }} />
       </div>
     )
   }
