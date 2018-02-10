@@ -24,14 +24,17 @@
     "testonly": "mocha --require .scripts/mocha_runner src/**/tests/**/*.js",
     "test": "npm run lint && npm run testonly",
     "test-watch": "npm run testonly -- --watch --watch-extensions js",
-    "storybook": "start-storybook -p 9010",
+    "storybook": "start-storybook -p 6006",
     "publish-storybook": "bash .scripts/publish_storybook.sh",
-    "deploy-storybook": "storybook-to-ghpages"
+    "deploy-storybook": "storybook-to-ghpages",
+    "build-storybook": "build-storybook"
   },
   "devDependencies": {
     "@kadira/storybook-deployer": "^1.2.0",
-    "@storybook/addon-actions": "^3.2.6",
-    "@storybook/react": "3.2.8",
+    "@storybook/addon-actions": "^3.3.12",
+    "@storybook/addon-links": "^3.3.12",
+    "@storybook/addons": "^3.3.12",
+    "@storybook/react": "^3.3.12",
     "babel-cli": "^6.23.0",
     "babel-core": "^6.23.0",
     "babel-loader": "^6.2.4",
@@ -45,16 +48,17 @@
     "git-url-parse": "^6.0.1",
     "jsdom": "^8.3.1",
     "mocha": "^2.4.5",
-    "react": "^15.6.0",
-    "react-addons-test-utils": "^15.0.0",
-    "react-bootstrap": "^0.31.3",
-    "react-dom": "^15.0.0",
+    "react": "^16.2.0",
+    "react-addons-test-utils": "^15.6.2",
+    "react-bootstrap": "^0.32.1",
+    "react-dom": "^16.2.0",
     "sinon": "^1.17.3",
     "standard": "^8.0.0",
+    "url-loader": "^0.6.2",
     "webpack": "^2.0.0"
   },
   "peerDependencies": {
-    "react-bootstrap": "^0.31.3"
+    "react": "^15.0.0 || ^16.0.0"
   },
   "dependencies": {},
   "main": "dist/index.js",
