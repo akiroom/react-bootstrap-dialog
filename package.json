@@ -58,7 +58,7 @@
     "webpack": "^2.0.0"
   },
   "peerDependencies": {
-    "react-bootstrap": "^0.32.0"
+    "react": "^16.0.0"
   },
   "dependencies": {},
   "main": "dist/index.js",
