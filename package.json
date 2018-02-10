@@ -58,7 +58,7 @@
     "webpack": "^2.0.0"
   },
   "peerDependencies": {
-    "react": "^16.0.0"
+    "react": "^15.0.0 || ^16.0.0"
   },
   "dependencies": {},
   "main": "dist/index.js",
