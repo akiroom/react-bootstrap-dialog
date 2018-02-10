@@ -1,3 +1,9 @@
+# v0.9.3
+
+- Update some libraries. See #8
+- Change peerDependencies. See #8
+  - Remove react-bootstrap, Add react.
+
 # v0.9.2
 
 - Update some libraries.
