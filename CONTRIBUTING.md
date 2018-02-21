@@ -24,6 +24,9 @@ Run `npm run publish-storybook` to deploy storybook on [gh-pages branch](https:/
 
 ## Publish
 
+1. Update CHANGELOG.md.
+2. Publish:
+
 ```sh
 npm publish
 ```
