@@ -3,7 +3,7 @@ import React from 'react'
 import {Button} from 'react-bootstrap'
 import Dialog from '../../index'
 
-export default class ShowWithTextInput extends React.Component {
+export default class ShowPrompt extends React.Component {
   constructor () {
     super()
     this.showTextInput = this.showTextInput.bind(this)

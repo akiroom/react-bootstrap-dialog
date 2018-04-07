@@ -7,7 +7,7 @@ import ShowWithOnHide from './samples/ShowWithOnHide'
 import ShowWarningDialog from './samples/ShowWarningDialog'
 import ShowCustomDialog from './samples/ShowCustomDialog'
 import ShowDialogWithChangedOptions from './samples/ShowDialogWithChangedOptions'
-import ShowWithTextInput from './samples/ShowWithTextInput'
+import ShowPrompt from './samples/ShowPrompt'
 
 storiesOf('Dialog', module)
   .addDecorator((story) => (
@@ -21,4 +21,4 @@ storiesOf('Dialog', module)
   .add('Warning dialog', () => (<ShowWarningDialog />))
   .add('Custom dialog', () => (<ShowCustomDialog />))
   .add('Global options', () => (<ShowDialogWithChangedOptions />))
-  .add('Text input', () => (<ShowWithTextInput />))
+  .add('Prompt', () => (<ShowPrompt />))
