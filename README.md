@@ -3,7 +3,9 @@
 [![npm version](https://badge.fury.io/js/react-bootstrap-dialog.svg)](https://badge.fury.io/js/react-bootstrap-dialog)
 [![Build Status](https://travis-ci.org/akiroom/react-bootstrap-dialog.svg?branch=master)](https://travis-ci.org/akiroom/react-bootstrap-dialog)
 
-It's a **Modal-dialog React component** based on `<Modal />` in [react-bootstrap](https://react-bootstrap.github.io/), It's configurable and easy to use instead of `window.alert` or `window.confirm` in your React application.
+It's a **Modal-dialog React component** based on `<Modal />` in [react-bootstrap](https://react-bootstrap.github.io/), It's configurable and easy to use alternative for `window.alert` or `window.confirm` in your React application.
+
+[![https://gyazo.com/d9c073c6c7d66c05e5398f386345f452](https://i.gyazo.com/d9c073c6c7d66c05e5398f386345f452.gif)](https://gyazo.com/d9c073c6c7d66c05e5398f386345f452)
 
 Index:
 
@@ -14,10 +16,15 @@ Index:
 
 ## Screenshots
 
-| Default Alert | Default Dialog | Custom Dialog |
-|---------------|----------------|---------------|
-| Instead of `window.alert` | Instead of `window.confirm` | Full customized |
-| [![https://gyazo.com/84e315aca42ac4dbe39e51ce3451bb53](https://i.gyazo.com/84e315aca42ac4dbe39e51ce3451bb53.gif)](https://gyazo.com/84e315aca42ac4dbe39e51ce3451bb53) | [![https://gyazo.com/f8e8bfd41d9c652a55ed06a0828dc57e](https://i.gyazo.com/f8e8bfd41d9c652a55ed06a0828dc57e.gif)](https://gyazo.com/f8e8bfd41d9c652a55ed06a0828dc57e) | [![https://gyazo.com/d9c073c6c7d66c05e5398f386345f452](https://i.gyazo.com/d9c073c6c7d66c05e5398f386345f452.gif)](https://gyazo.com/d9c073c6c7d66c05e5398f386345f452) |
+| Default Alert | Default Dialog |
+|---------------|----------------|
+| Alternative for `window.alert` | Alternative for `window.confirm` |
+| [![https://gyazo.com/84e315aca42ac4dbe39e51ce3451bb53](https://i.gyazo.com/84e315aca42ac4dbe39e51ce3451bb53.gif)](https://gyazo.com/84e315aca42ac4dbe39e51ce3451bb53) | [![https://gyazo.com/f8e8bfd41d9c652a55ed06a0828dc57e](https://i.gyazo.com/f8e8bfd41d9c652a55ed06a0828dc57e.gif)](https://gyazo.com/f8e8bfd41d9c652a55ed06a0828dc57e) |
+
+| Text Prompt | Password Prompt |
+|--------|---------------|
+| Alternative for `window.prompt` | Easy password input |
+| [![https://gyazo.com/e621e62d17037ab0d1e40fda721ecbb2](https://i.gyazo.com/e621e62d17037ab0d1e40fda721ecbb2.gif)](https://gyazo.com/e621e62d17037ab0d1e40fda721ecbb2) | [![https://gyazo.com/b249233c97a4519f565a6885902befc3](https://i.gyazo.com/b249233c97a4519f565a6885902befc3.gif)](https://gyazo.com/b249233c97a4519f565a6885902befc3) |
 
 ## Demo and Sample
 
@@ -88,6 +95,7 @@ Index:
 - [`Dialog`](#dialog)
 - [`<Dialog />`](#dialog-)
 - [`DialogAction` generators](#dialogaction-generators)
+- [`DialogPrompt` generators](#dialogprompt-generators)
 
 
 ### `Dialog`
@@ -134,7 +142,7 @@ Show dialog with choices. This is similar to `window.confirm`.
    - `actions`: [Array[DialogAction]] The choices for presenting to user. See [DialogAction generators](#dialogaction-generators).
    - `bsSize`: [String] The width size for dialog. You can choose in [null, 'medium', 'large', 'small'].
    - `onHide`: [Function] The method to call when the dialog was closed by clicking background.
-   - `prompt`: [Prompt] The prompt to get user input. See [Prompt generators](#prompt-generators).
+   - `prompt`: [DialogPrompt] The prompt to get user input. See [DialogPrompt generators](#dialogprompt-generators).
 
 ##### Example
 
@@ -256,7 +264,7 @@ Dialog.CancelAction()
 ```
 
 
-### `Prompt` generators
+### `DialogPrompt` generators
 
 #### Dialog.TextPrompt(options = {})
 
