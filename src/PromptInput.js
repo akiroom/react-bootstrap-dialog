@@ -7,7 +7,8 @@ export default class PromptInput extends React.Component {
     const {initialValue, placeholder} = props.prompt
     this.state = {
       value: initialValue || '',
-      initialValue, placeholder
+      initialValue,
+      placeholder
     }
     this.inputElement = null
     this.onSubmit = this.onSubmit.bind(this)
@@ -36,7 +37,7 @@ export default class PromptInput extends React.Component {
     return (
       <form onSubmit={this.onSubmit}>
         <input
-          ref={(el) => this.inputElement = el}
+          ref={(el) => { this.inputElement = el }}
           type={type}
           className='form-control'
           value={value}

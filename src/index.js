@@ -149,7 +149,13 @@ class Dialog extends React.Component {
               : this.state.body
           }
           {
-            this.state.prompt && (<PromptInput ref={(el) => this.promptInput = el} prompt={this.state.prompt} onSubmit={this.onSubmitPrompt}/>)
+            this.state.prompt && (
+              <PromptInput
+                ref={(el) => { this.promptInput = el }}
+                prompt={this.state.prompt}
+                onSubmit={this.onSubmitPrompt}
+              />
+            )
           }
         </Modal.Body>
         <Modal.Footer>
