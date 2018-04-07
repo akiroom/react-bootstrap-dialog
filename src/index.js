@@ -1,6 +1,6 @@
 import React from 'react'
 import {Modal} from 'react-bootstrap'
-import {TextPrompt, PasswordPrompt} from './PromptObject'
+import {TextPrompt, PasswordPrompt} from './Prompts'
 import PromptInput from './PromptInput'
 
 /**

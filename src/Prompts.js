@@ -3,7 +3,7 @@
  * The class to represent prompt options
  */
 export class Prompt {
-  constructor (options) {
+  constructor (options = {}) {
     const {initialValue, placeholder} = options
     this.initialValue = initialValue
     this.placeholder = placeholder
