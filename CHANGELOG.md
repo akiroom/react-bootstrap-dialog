@@ -1,6 +1,7 @@
 # master branch
 
 - Prevent the pollution of options by the previous dialog.
+- Add prompt option to alternate `window.prompt`. See #14
 
 # v0.9.3
 

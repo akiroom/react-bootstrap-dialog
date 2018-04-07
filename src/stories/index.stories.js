@@ -7,6 +7,7 @@ import ShowWithOnHide from './samples/ShowWithOnHide'
 import ShowWarningDialog from './samples/ShowWarningDialog'
 import ShowCustomDialog from './samples/ShowCustomDialog'
 import ShowDialogWithChangedOptions from './samples/ShowDialogWithChangedOptions'
+import ShowPrompt from './samples/ShowPrompt'
 
 storiesOf('Dialog', module)
   .addDecorator((story) => (
@@ -14,9 +15,10 @@ storiesOf('Dialog', module)
       {story()}
     </div>
   ))
-  .add('show alert', () => (<ShowAlert />))
-  .add('show ok cancel dialog', () => (<ShowOkCancelDialog />))
-  .add('show with onHide', () => (<ShowWithOnHide />))
-  .add('show warning dialog', () => (<ShowWarningDialog />))
-  .add('show custom dialog', () => (<ShowCustomDialog />))
-  .add('show dialog with changed options', () => (<ShowDialogWithChangedOptions />))
+  .add('Alert', () => (<ShowAlert />))
+  .add('OK/Cancel', () => (<ShowOkCancelDialog />))
+  .add('onHide event', () => (<ShowWithOnHide />))
+  .add('Warning dialog', () => (<ShowWarningDialog />))
+  .add('Custom dialog', () => (<ShowCustomDialog />))
+  .add('Global options', () => (<ShowDialogWithChangedOptions />))
+  .add('Prompt', () => (<ShowPrompt />))
