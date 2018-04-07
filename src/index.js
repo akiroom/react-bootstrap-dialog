@@ -1,6 +1,6 @@
 import React from 'react'
 import {Modal} from 'react-bootstrap'
-import {TextPromptObject, PasswordPromptObject} from './PromptObjects'
+import {TextPrompt, PasswordPrompt} from './PromptObject'
 import PromptInput from './PromptInput'
 
 /**
@@ -217,8 +217,8 @@ Dialog.OKAction = (func) => new DialogAction(Dialog.options.defaultOkLabel, (dia
 Dialog.CancelAction = (func) => new DialogAction(Dialog.options.defaultCancelLabel, (dialog) => { dialog.hide(); func && func(dialog) }, null, 'esc')
 Dialog.SingleOKAction = () => new DialogAction(Dialog.options.defaultOkLabel, (dialog) => { dialog.hide() }, Dialog.options.primaryClassName, 'enter,esc')
 
-Dialog.TextPrompt = (initialValue = '', placeholder = '') => new TextPromptObject(initialValue, placeholder)
-Dialog.PasswordPrompt = (initialValue = '', placeholder = '') => new PasswordPromptObject(initialValue, placeholder)
+Dialog.TextPrompt = (options) => new TextPrompt(options)
+Dialog.PasswordPrompt = (options) => new PasswordPrompt(options)
 
 Dialog.displayName = 'Dialog'
 module.exports = Dialog

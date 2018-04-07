@@ -2,7 +2,7 @@
 /**
  * The class to represent prompt options
  */
-export class PromptObject {
+export class Prompt {
   constructor (options) {
     const {initialValue, placeholder} = options
     this.initialValue = initialValue
@@ -13,11 +13,11 @@ export class PromptObject {
 /**
  * The class to represent text prompt options
  */
-export class TextPromptObject extends PromptObject {
+export class TextPrompt extends Prompt {
 }
 
 /**
  * The class to represent passowrd prompt options
  */
-export class PasswordPromptObject extends PromptObject {
+export class PasswordPrompt extends Prompt {
 }

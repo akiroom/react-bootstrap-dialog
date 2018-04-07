@@ -89,6 +89,7 @@ Index:
 - [`<Dialog />`](#dialog-)
 - [`DialogAction` generators](#dialogaction-generators)
 
+
 ### `Dialog`
 
 #### setOptions(options)
@@ -120,6 +121,7 @@ Reset default options to presets.
 Dialog.resetOptions()
 ```
 
+
 ### `<Dialog />`
 
 #### show(options)
@@ -129,9 +131,10 @@ Show dialog with choices. This is similar to `window.confirm`.
 - `options`: [Object] The parameters for options.
    - `title`: [String, Node] The title of dialog.
    - `body`: [String, Node] The body of message.
-   - `actions`: [Array[DialogAction]] The choices for presenting to user. See [DialogAction generators](#dialogaction-generators)
+   - `actions`: [Array[DialogAction]] The choices for presenting to user. See [DialogAction generators](#dialogaction-generators).
    - `bsSize`: [String] The width size for dialog. You can choose in [null, 'medium', 'large', 'small'].
    - `onHide`: [Function] The method to call when the dialog was closed by clicking background.
+   - `prompt`: [Prompt] The prompt to get user input. See [Prompt generators](#prompt-generators).
 
 ##### Example
 
@@ -173,6 +176,7 @@ Hide this dialog.
 ```js
 this.dialog.hide()
 ```
+
 
 ### `DialogAction` generators
 
@@ -249,4 +253,43 @@ Dialog.CancelAction(() => {
 ```js
 // Do nothing.
 Dialog.CancelAction()
+```
+
+
+### `Prompt` generators
+
+#### Dialog.TextPrompt(options = {})
+
+The prompt settings to show text input for `options.prompt` in `dialog.show`.
+
+- `options`: [Object] The parameters for options.
+   - `initialValue`: [String] The initial value for the prompt.
+   - `placeholder`: [String] The placeholder for the prompt.
+
+##### Example
+
+```js
+Dialog.TextPrompt()
+
+// or
+
+Dialog.TextPrompt({initialValue: 'me@example.com', placeholder: 'your email'})
+```
+
+#### Dialog.PasswordPrompt(options = {})
+
+The prompt settings to show password input for `options.prompt` in `dialog.show`.
+
+- `options`: [Object] The parameters for options.
+   - `initialValue`: [String] The initial value for the prompt.
+   - `placeholder`: [String] The placeholder for the prompt.
+
+##### Example
+
+```js
+Dialog.PasswordPrompt()
+
+// or
+
+Dialog.PasswordPrompt({initialValue: 'previous~pa$sw0rd', placeholder: 'your password'})
 ```

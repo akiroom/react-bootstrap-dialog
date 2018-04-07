@@ -1,6 +1,7 @@
 # master branch
 
 - Prevent the pollution of options by the previous dialog.
+- Add prompt option. See #14
 
 # v0.9.3
 

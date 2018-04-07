@@ -1,5 +1,5 @@
 import React from 'react'
-import {PasswordPromptObject} from './PromptObjects'
+import {PasswordPrompt} from './Prompts'
 
 export default class PromptInput extends React.Component {
   constructor (props) {
@@ -33,7 +33,7 @@ export default class PromptInput extends React.Component {
   render () {
     const {prompt} = this.props
     const {value, placeholder} = this.state
-    const type = (prompt instanceof PasswordPromptObject) ? 'password' : 'text'
+    const type = (prompt instanceof PasswordPrompt) ? 'password' : 'text'
     return (
       <form onSubmit={this.onSubmit}>
         <input
