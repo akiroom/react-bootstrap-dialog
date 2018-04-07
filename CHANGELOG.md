@@ -1,3 +1,7 @@
+# master branch
+
+- Prevent the pollution of options by the previous dialog.
+
 # v0.9.3
 
 - Update some libraries. See #8
