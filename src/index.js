@@ -1,5 +1,7 @@
 import React from 'react'
 import {Modal} from 'react-bootstrap'
+import {TextPromptObject, PasswordPromptObject} from './PromptObjects'
+import PromptInput from './PromptInput'
 
 /**
  * The modal dialog which can be altenative to `window.confirm` and `window.alert`.
@@ -30,14 +32,18 @@ class Dialog extends React.Component {
       showModal: false,
       actions: [],
       bsSize: undefined,
-      onHide: null
+      onHide: null,
+      prompt: null
     }
   }
 
   constructor (props) {
     super(props)
+    this.promptInput = null
+    this.keyBinds = []
     this.state = Dialog.initialState()
     this.onHide = this.onHide.bind(this)
+    this.onSubmitPrompt = this.onSubmitPrompt.bind(this)
   }
 
   componentWillUnmount () {
@@ -54,6 +60,7 @@ class Dialog extends React.Component {
    * @param options.actions {DialogAction} The choices for presenting to user.
    * @param options.bsSize {[null, 'medium', 'large', 'small']} The width size for dialog.
    * @param options.onHide {function} The method to call when the dialog was closed by clicking background.
+   * @param options.prompt {[null, Prompt]} Use prompt for text input or password input.
    */
   show (options = {}) {
     let keyBinds = {}
@@ -66,6 +73,7 @@ class Dialog extends React.Component {
       }
     })
     // TODO: Add keybinds
+    this.keyBinds = keyBinds
     options['showModal'] = true
     this.setState(Dialog.initialState())
     this.setState(options)
@@ -105,6 +113,22 @@ class Dialog extends React.Component {
     this.setState({showModal: false})
   }
 
+  /**
+   * Get the value in prompt.
+   * @return {string, null}
+   */
+  get value () {
+    if (this.promptInput) {
+      return this.promptInput.value
+    }
+    return null
+  }
+
+  onSubmitPrompt () {
+    const action = this.keyBinds['enter']
+    action && action()
+  }
+
   render () {
     const size = (typeof this.state.bsSize) === 'undefined' ? 'small' : (this.state.bsSize === 'medium' ? null : this.state.bsSize)
     return (
@@ -123,6 +147,9 @@ class Dialog extends React.Component {
             typeof this.state.body === 'string'
               ? (<p>{this.state.body}</p>)
               : this.state.body
+          }
+          {
+            this.state.prompt && (<PromptInput ref={(el) => this.promptInput = el} prompt={this.state.prompt} onSubmit={this.onSubmitPrompt}/>)
           }
         </Modal.Body>
         <Modal.Footer>
@@ -183,6 +210,9 @@ Dialog.DefaultAction = (label, func, className) => new DialogAction(label, func,
 Dialog.OKAction = (func) => new DialogAction(Dialog.options.defaultOkLabel, (dialog) => { dialog.hide(); func && func(dialog) }, Dialog.options.primaryClassName, 'enter')
 Dialog.CancelAction = (func) => new DialogAction(Dialog.options.defaultCancelLabel, (dialog) => { dialog.hide(); func && func(dialog) }, null, 'esc')
 Dialog.SingleOKAction = () => new DialogAction(Dialog.options.defaultOkLabel, (dialog) => { dialog.hide() }, Dialog.options.primaryClassName, 'enter,esc')
+
+Dialog.TextPrompt = (initialValue = '', placeholder = '') => new TextPromptObject(initialValue, placeholder)
+Dialog.PasswordPrompt = (initialValue = '', placeholder = '') => new PasswordPromptObject(initialValue, placeholder)
 
 Dialog.displayName = 'Dialog'
 module.exports = Dialog
