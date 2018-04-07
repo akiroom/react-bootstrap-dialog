@@ -39,6 +39,12 @@ Index:
 npm i react-bootstrap-dialog --save
 ```
 
+or
+
+```sh
+yarn add react-bootstrap-dialog
+```
+
 ### Quick start
 
 Step 1. Import package.
@@ -59,7 +65,7 @@ Step 3. Call `showAlert` method or `show` method.
 this.dialog.showAlert('Hello Dialog!')
 ```
 
-This code is full code for these steps.
+Full sample:
 
 ```js
 import React from 'react'
