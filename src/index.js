@@ -23,7 +23,7 @@ class Dialog extends React.Component {
     Dialog.options = Dialog.DEFAULT_OPTIONS
   }
 
-  static initialiState () {
+  static initialState () {
     return {
       title: null,
       body: null,
@@ -36,7 +36,7 @@ class Dialog extends React.Component {
 
   constructor (props) {
     super(props)
-    this.state = Dialog.initialiState()
+    this.state = Dialog.initialState()
     this.onHide = this.onHide.bind(this)
   }
 
@@ -67,7 +67,7 @@ class Dialog extends React.Component {
     })
     // TODO: Add keybinds
     options['showModal'] = true
-    this.setState(Dialog.initialiState())
+    this.setState(Dialog.initialState())
     this.setState(options)
   }
 
