@@ -6,14 +6,17 @@ export default class PromptInput extends React.Component {
     super(props)
     const {initialValue, placeholder} = props.prompt
     this.state = {
-      value: initialValue,
+      value: initialValue || '',
       initialValue, placeholder
     }
+    this.inputElement = null
     this.onSubmit = this.onSubmit.bind(this)
   }
 
   componentDidMount () {
-    this.setState({value: this.state.initialValue || ''})
+    this.setState({value: this.state.initialValue || ''}, () => {
+      this.inputElement.select()
+    })
   }
 
   get value () {
@@ -33,6 +36,7 @@ export default class PromptInput extends React.Component {
     return (
       <form onSubmit={this.onSubmit}>
         <input
+          ref={(el) => this.inputElement = el}
           type={type}
           className='form-control'
           value={value}
