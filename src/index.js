@@ -163,7 +163,7 @@ class Dialog extends React.Component {
             this.state.actions.map((action) => {
               return (
                 <button
-                  key={action.label}
+                  key={action.key}
                   type='button'
                   className={`btn btn-sm ${action.className}`}
                   onClick={() => { action.func && action.func(this) }}
