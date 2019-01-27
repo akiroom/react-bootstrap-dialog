@@ -14,7 +14,7 @@ See [feross/standard](https://github.com/feross/standard).
 
 ## Preview on Storybook
 
-Run `npm run storybook`.
+Run `yarn storybook`.
 
 ## Deploy Storybook
 
