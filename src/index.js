@@ -1,4 +1,5 @@
 import React from 'react'
+import * as ReactBootstrap from 'react-bootstrap'
 import {Modal} from 'react-bootstrap'
 import {TextPrompt, PasswordPrompt} from './Prompts'
 import PromptInput from './PromptInput'
@@ -129,10 +130,22 @@ class Dialog extends React.Component {
     action && action()
   }
 
+  getSize (defaultSize) {
+    return (typeof this.state.bsSize) === 'undefined' ? defaultSize : (this.state.bsSize === 'medium' ? null : this.state.bsSize)
+  }
+
   render () {
-    const size = (typeof this.state.bsSize) === 'undefined' ? 'small' : (this.state.bsSize === 'medium' ? null : this.state.bsSize)
+    // XXX: Check current ReactBootstrap v4, or not.
+    const isLaterV4 = !!ReactBootstrap['Card']
+    const additionalProps = (
+      isLaterV4 ? {
+        size: this.getSize('sm')
+      } : {
+        bsSize: this.getSize('small')
+      }
+    )
     return (
-      <Modal show={this.state.showModal} onHide={this.onHide} bsSize={size}>
+      <Modal show={this.state.showModal} onHide={this.onHide} {...additionalProps}>
         {
           this.state.title && (
             <Modal.Header>
@@ -193,7 +206,7 @@ class DialogAction {
   constructor (label, func, className, key) {
     this.label = label || Dialog.options.defaultOkLabel
     this._func = func
-    this.className = className || 'btn-default'
+    this.className = className || Dialog.options.defaultButtonClassName
     this.key = key
   }
 
@@ -206,7 +219,8 @@ class DialogAction {
 Dialog.DEFAULT_OPTIONS = {
   defaultOkLabel: 'OK',
   defaultCancelLabel: 'Cancel',
-  primaryClassName: 'btn-primary'
+  primaryClassName: 'btn-primary',
+  defaultButtonClassName: 'btn-default btn-outline-secondary'
 }
 
 Dialog.options = Dialog.DEFAULT_OPTIONS

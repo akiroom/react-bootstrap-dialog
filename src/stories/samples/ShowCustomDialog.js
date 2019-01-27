@@ -1,6 +1,6 @@
 import { action } from '@storybook/addon-actions'
 import React from 'react'
-import {Button, Glyphicon} from 'react-bootstrap'
+import {Button} from 'react-bootstrap'
 import Dialog from '../../index'
 
 export default class ShowCustomDialog extends React.Component {
@@ -12,8 +12,6 @@ export default class ShowCustomDialog extends React.Component {
   onClick () {
     const customBody = (
       <p>
-        <Glyphicon glyph='flag' />
-        &nbsp;
         <span className='text-primary'>This custom sample</span> for
         dialog and labels.
       </p>
@@ -39,7 +37,7 @@ export default class ShowCustomDialog extends React.Component {
           'btn-info'
         ),
         Dialog.Action(
-          <span><Glyphicon glyph='star' />&nbsp;Success</span>,
+          <span style={{fontWeight: 'bold', fontStyle: 'underline'}}>Success</span>,
           () => action('Success button was clicked!')(),
           'btn-success'
         )

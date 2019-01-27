@@ -114,14 +114,16 @@ Set default options for applying to all dialogs
   - `defaultOkLabel`: [String, Node] The default label for OK button. Default is `'OK'`.
   - `defaultCancelLabel`: [String, Node] The default label for Cancel button. Default is `'Cancel'`.
   - `primaryClassName`: [String] The class name for primary button. Default is `'btn-primary'`
-
+  - `defaultButtonClassName`: [String] The class name for ordinary button. Default is `'btn-default btn-outline-secondary'`
+    - Notice: The default value includes v3 and v4 classes.
 ##### Example
 
 ```js
 Dialog.setOptions({
   defaultOkLabel: 'Yes! Yes! Yes!',
   defaultCancelLabel: 'Noooooooo!!',
-  primaryClassName: 'btn-success'
+  primaryClassName: 'btn-success',
+  defaultButtonClassName: 'btn-link'
 })
 ```
 
@@ -146,7 +148,9 @@ Show dialog with choices. This is similar to `window.confirm`.
    - `title`: [String, Node] The title of dialog.
    - `body`: [String, Node] The body of message.
    - `actions`: [Array[DialogAction]] The choices for presenting to user. See [DialogAction generators](#dialogaction-generators).
-   - `bsSize`: [String] The width size for dialog. You can choose in [null, 'medium', 'large', 'small'].
+   - `bsSize`: [String] The width size for dialog.
+     - with react-bootstrap v3: You can choose from [null, 'medium', 'large', 'small'].
+     - with react-bootstrap v4: You can choose from [null, 'medium', 'lg', 'sm'].
    - `onHide`: [Function] The method to call when the dialog was closed by clicking background.
    - `prompt`: [DialogPrompt] The prompt to get user input. See [DialogPrompt generators](#dialogprompt-generators).
 
