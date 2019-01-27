@@ -3,9 +3,13 @@
 [![npm version](https://badge.fury.io/js/react-bootstrap-dialog.svg)](https://badge.fury.io/js/react-bootstrap-dialog)
 [![Build Status](https://travis-ci.org/akiroom/react-bootstrap-dialog.svg?branch=master)](https://travis-ci.org/akiroom/react-bootstrap-dialog)
 
-It's a **Modal-dialog React component** based on `<Modal />` in [react-bootstrap](https://react-bootstrap.github.io/), It's configurable and easy to use alternative for `window.alert`, `window.confirm`, or `window.prompt` in your React application.
+The React component library for **alert or dialog** based on **[react-bootstrap](https://react-bootstrap.github.io/)'s `<Modal />`**.
+Configurable and easy to use alternative for `window.alert`, `window.confirm`, or `window.prompt` in your React application.
 
 [![https://gyazo.com/d9c073c6c7d66c05e5398f386345f452](https://i.gyazo.com/d9c073c6c7d66c05e5398f386345f452.gif)](https://gyazo.com/d9c073c6c7d66c05e5398f386345f452)
+
+You can use with react-bootstrap v3 or v4.
+(v4 since react-bootstrap-dialog v0.11.0)
 
 Index:
 
@@ -86,7 +90,7 @@ export default class SampleCode extends React.Component {
     return (
       <div>
         <Button onClick={this.onClick}>Show alert</Button>
-        <Dialog ref={(el) => { this.dialog = el }} />
+        <Dialog ref={(component) => { this.dialog = component }} />
       </div>
     )
   }
@@ -114,14 +118,16 @@ Set default options for applying to all dialogs
   - `defaultOkLabel`: [String, Node] The default label for OK button. Default is `'OK'`.
   - `defaultCancelLabel`: [String, Node] The default label for Cancel button. Default is `'Cancel'`.
   - `primaryClassName`: [String] The class name for primary button. Default is `'btn-primary'`
-
+  - `defaultButtonClassName`: [String] The class name for ordinary button. Default is `'btn-default btn-outline-secondary'`
+    - Notice: The default value includes v3 and v4 classes.
 ##### Example
 
 ```js
 Dialog.setOptions({
   defaultOkLabel: 'Yes! Yes! Yes!',
   defaultCancelLabel: 'Noooooooo!!',
-  primaryClassName: 'btn-success'
+  primaryClassName: 'btn-success',
+  defaultButtonClassName: 'btn-link'
 })
 ```
 
@@ -146,7 +152,9 @@ Show dialog with choices. This is similar to `window.confirm`.
    - `title`: [String, Node] The title of dialog.
    - `body`: [String, Node] The body of message.
    - `actions`: [Array[DialogAction]] The choices for presenting to user. See [DialogAction generators](#dialogaction-generators).
-   - `bsSize`: [String] The width size for dialog. You can choose in [null, 'medium', 'large', 'small'].
+   - `bsSize`: [String] The width size for dialog.
+     - with react-bootstrap v3: You can choose from [null, 'medium', 'large', 'small'].
+     - with react-bootstrap v4: You can choose from [null, 'medium', 'lg', 'sm'].
    - `onHide`: [Function] The method to call when the dialog was closed by clicking background.
    - `prompt`: [DialogPrompt] The prompt to get user input. See [DialogPrompt generators](#dialogprompt-generators).
 
