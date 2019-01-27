@@ -7,6 +7,8 @@ It's a **Modal-dialog React component** based on `<Modal />` in [react-bootstrap
 
 [![https://gyazo.com/d9c073c6c7d66c05e5398f386345f452](https://i.gyazo.com/d9c073c6c7d66c05e5398f386345f452.gif)](https://gyazo.com/d9c073c6c7d66c05e5398f386345f452)
 
+You can use react-bootstrap either v3 or v4.(since react-bootstrap-dialog v0.11.0)
+
 Index:
 
 - [Screenshots](#screenshots)
