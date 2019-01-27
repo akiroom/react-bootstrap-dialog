@@ -29,5 +29,5 @@ Run `yarn publish-storybook` to deploy storybook on [gh-pages branch](https://pa
 3. Publish:
 
 ```sh
-npm publish
+yarn publish
 ```
