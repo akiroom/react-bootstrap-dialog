@@ -1,8 +1,9 @@
 import React from 'react'
 import * as ReactBootstrap from 'react-bootstrap'
-import {Modal} from 'react-bootstrap'
 import {TextPrompt, PasswordPrompt} from './Prompts'
 import PromptInput from './PromptInput'
+
+const Modal = ReactBootstrap.Modal
 
 /**
  * The modal dialog which can be altenative to `window.confirm` and `window.alert`.
