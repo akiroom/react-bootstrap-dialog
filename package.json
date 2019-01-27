@@ -1,6 +1,6 @@
 {
   "name": "react-bootstrap-dialog",
-  "version": "0.10.0",
+  "version": "0.11.0",
   "description": "The modal-dialog React component with React Bootstrap, alternates `window.confirm` and `window.alert`.",
   "repository": {
     "type": "git",
