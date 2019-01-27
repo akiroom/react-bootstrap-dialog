@@ -90,7 +90,7 @@ export default class SampleCode extends React.Component {
     return (
       <div>
         <Button onClick={this.onClick}>Show alert</Button>
-        <Dialog ref={(el) => { this.dialog = el }} />
+        <Dialog ref={(component) => { this.dialog = component }} />
       </div>
     )
   }
