@@ -2,6 +2,7 @@
 
 - Support react-bootstrap v1.x.x (Bootstrap v4) 🎉
 - Add `defaultButtonClassName` option to `Dialog.options`
+- Use index number for the key in the list of action buttons. See #22
 
 # v0.10.0
 
