@@ -1,4 +1,4 @@
-# develop
+# v0.11.0
 
 - Support react-bootstrap v1.x.x (Bootstrap v4) 🎉
 - Add `defaultButtonClassName` option to `Dialog.options`

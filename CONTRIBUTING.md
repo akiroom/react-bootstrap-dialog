@@ -20,7 +20,7 @@ Run `yarn storybook`.
 
 We use [storybook-deployer](https://github.com/kadirahq/storybook-deployer)
 
-Run `npm run publish-storybook` to deploy storybook on [gh-pages branch](https://pages.github.com/).
+Run `yarn publish-storybook` to deploy storybook on [gh-pages branch](https://pages.github.com/).
 
 ## Publish
 
@@ -29,5 +29,5 @@ Run `npm run publish-storybook` to deploy storybook on [gh-pages branch](https:/
 3. Publish:
 
 ```sh
-npm publish
+yarn publish
 ```
