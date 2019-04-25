@@ -212,7 +212,6 @@ class DialogAction {
   }
 
   func (dialog) {
-    dialog.hide()
     this._func && this._func(dialog)
   }
 }
@@ -228,7 +227,15 @@ Dialog.options = Dialog.DEFAULT_OPTIONS
 
 Dialog.Action = (label, func, className, key) => new DialogAction(label, func, className, key)
 Dialog.DefaultAction = (label, func, className) => new DialogAction(label, func, className && className.length > 0 ? className : Dialog.options.primaryClassName, 'enter')
-Dialog.OKAction = (func) => new DialogAction(Dialog.options.defaultOkLabel, (dialog) => { dialog.hide(); func && func(dialog) }, Dialog.options.primaryClassName, 'enter')
+Dialog.OKAction = (func) => new DialogAction(Dialog.options.defaultOkLabel, (dialog) => { 
+    if (!(dialog.state.prompt && dialog.state.prompt.required && dialog.value === '')) {
+      dialog.hide();
+    }  	
+    func && func(dialog) 
+  },
+  Dialog.options.primaryClassName,
+  'enter'
+)
 Dialog.CancelAction = (func) => new DialogAction(Dialog.options.defaultCancelLabel, (dialog) => { dialog.hide(); func && func(dialog) }, null, 'esc')
 Dialog.SingleOKAction = () => new DialogAction(Dialog.options.defaultOkLabel, (dialog) => { dialog.hide() }, Dialog.options.primaryClassName, 'enter,esc')
 
