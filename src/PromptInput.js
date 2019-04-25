@@ -4,11 +4,12 @@ import {PasswordPrompt} from './Prompts'
 export default class PromptInput extends React.Component {
   constructor (props) {
     super(props)
-    const {initialValue, placeholder} = props.prompt
+    const {initialValue, placeholder, required} = props.prompt
     this.state = {
       value: initialValue || '',
       initialValue,
-      placeholder
+      placeholder,
+	  required
     }
     this.inputElement = null
     this.onSubmit = this.onSubmit.bind(this)
@@ -32,7 +33,7 @@ export default class PromptInput extends React.Component {
 
   render () {
     const {prompt} = this.props
-    const {value, placeholder} = this.state
+    const {value, placeholder,required} = this.state
     const type = (prompt instanceof PasswordPrompt) ? 'password' : 'text'
     return (
       <form onSubmit={this.onSubmit}>
@@ -44,6 +45,7 @@ export default class PromptInput extends React.Component {
           placeholder={placeholder}
           onChange={(e) => this.setState({value: e.target.value})}
           autoFocus
+		  required={required}
         />
       </form>
     )

@@ -1,12 +1,12 @@
-
 /**
  * The class to represent prompt options
  */
 export class DialogPrompt {
   constructor (options = {}) {
-    const {initialValue, placeholder} = options
+    const {initialValue, placeholder, required} = options
     this.initialValue = initialValue
     this.placeholder = placeholder
+    this.required = required
   }
 }
 
