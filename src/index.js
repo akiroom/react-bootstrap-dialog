@@ -225,8 +225,8 @@ Dialog.DEFAULT_OPTIONS = {
 
 Dialog.options = Dialog.DEFAULT_OPTIONS
 
-Dialog.Action = (label, func, className, key) => new DialogAction(label, func, className, key)
-Dialog.DefaultAction = (label, func, className) => new DialogAction(label, func, className && className.length > 0 ? className : Dialog.options.primaryClassName, 'enter')
+Dialog.Action = (label, func, className, key) => new DialogAction(label, (dialog) => { dialog.hide(); func && func(dialog)}, className, key)
+Dialog.DefaultAction = (label, func, className) => new DialogAction(label, (dialog) => { dialog.hide(); func && func(dialog)}, className && className.length > 0 ? className : Dialog.options.primaryClassName, 'enter')
 Dialog.OKAction = (func) => new DialogAction(Dialog.options.defaultOkLabel, (dialog) => { 
     if (!(dialog.state.prompt && dialog.state.prompt.required && dialog.value === '')) {
       dialog.hide();
