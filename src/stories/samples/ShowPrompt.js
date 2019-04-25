@@ -32,7 +32,7 @@ export default class ShowPrompt extends React.Component {
 
   showTextInputRequired () {
     this.dialog.show({
-      body: 'Input your message.',
+      body: 'Input your message (required).',
       prompt: Dialog.TextPrompt({required: true}),
       actions: [
         Dialog.CancelAction(),
@@ -60,7 +60,7 @@ export default class ShowPrompt extends React.Component {
 
   showTextInputWithOptionsRequired () {
     this.dialog.show({
-      body: 'Input your message.',
+      body: 'Input your message (required).',
       prompt: Dialog.TextPrompt({placeholder: 'name', required: true}),
       actions: [
         Dialog.CancelAction(),
@@ -88,7 +88,7 @@ export default class ShowPrompt extends React.Component {
 
   showPasswordInputRequired () {
     this.dialog.show({
-      body: 'Input your password.',
+      body: 'Input your password (required).',
       prompt: Dialog.PasswordPrompt({required: true}),
       actions: [
         Dialog.CancelAction(),
@@ -116,7 +116,7 @@ export default class ShowPrompt extends React.Component {
 
   showPasswordInputWithOptionsRequired () {
     this.dialog.show({
-      body: 'Input your password.',
+      body: 'Input your password (required).',
       prompt: Dialog.PasswordPrompt({placeholder: 'secret', required: true }),
       actions: [
         Dialog.CancelAction(),
