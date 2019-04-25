@@ -155,7 +155,7 @@ export default class ShowPrompt extends React.Component {
         </p>
 
         <p>
-          <Button onClick={this.showPasswordInputWithOptionsRequired}>Password inputt (required) with options</Button>
+          <Button onClick={this.showPasswordInputWithOptionsRequired}>Password input (required) with options</Button>
         </p>
 
         <Dialog ref={(el) => { this.dialog = el }} />
