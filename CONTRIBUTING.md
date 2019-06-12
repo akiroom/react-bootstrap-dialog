@@ -31,3 +31,27 @@ Run `yarn publish-storybook` to deploy storybook on [gh-pages branch](https://pa
 ```sh
 yarn publish
 ```
+
+---
+
+## Dist on GitHub and reference in `package.json` directly from GitHub
+
+This is in case the pull request doesn't get accepted quickly.
+
+Fork to a separate branch so as not to polute master or others, e.g. `release/x.y.z`
+
+Build the `dist` files
+
+```
+npm run prepublish
+```
+
+Reference the tarball for the branch from your `package.json` file
+
+```
+ "dependencies": {
+   ...
+   "react-bootstrap-dialog": "https://github.com/dvdsmpsn/react-bootstrap-dialog/tarball/release/v0.12.1",
+   ...
+ }
+```
