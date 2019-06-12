@@ -146,10 +146,10 @@ class Dialog extends React.Component {
       }
     )
     return (
-      <Modal show={this.state.showModal} onHide={this.onHide} {...additionalProps}>
+      <Modal show={this.state.showModal} onHide={this.onHide} {...additionalProps} backdrop="static">
         {
           this.state.title && (
-            <Modal.Header>
+            <Modal.Header closeButton>
               <Modal.Title>
                 {this.state.title}
               </Modal.Title>
