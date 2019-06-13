@@ -17,7 +17,7 @@ class Dialog extends React.Component {
    * @param options
    */
   static setOptions (options) {
-    Dialog.options = Object.assign({}, Dialog.DEFAULT_OPTIONS, options);
+    Dialog.options = Object.assign({}, Dialog.DEFAULT_OPTIONS, options)
   }
 
   /**
