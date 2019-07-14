@@ -1,6 +1,7 @@
 export interface DialogPromptOptions {
   initialValue?: string;
   placeholder?: string;
+  required?: boolean;
 }
 
 /**
@@ -9,11 +10,13 @@ export interface DialogPromptOptions {
 export class DialogPrompt {
   initialValue?: string
   placeholder?: string
+  required?: boolean
 
   constructor (options: DialogPromptOptions = {}) {
-    const {initialValue, placeholder} = options
+    const {initialValue, placeholder, required} = options
     this.initialValue = initialValue
     this.placeholder = placeholder
+    this.required = required
   }
 }
 

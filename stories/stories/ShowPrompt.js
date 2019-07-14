@@ -4,15 +4,7 @@ import {Button} from 'react-bootstrap'
 import Dialog from '../../src/index'
 
 export default class ShowPrompt extends React.Component {
-  constructor () {
-    super()
-    this.showTextInput = this.showTextInput.bind(this)
-    this.showTextInputWithOptions = this.showTextInputWithOptions.bind(this)
-    this.showPasswordInput = this.showPasswordInput.bind(this)
-    this.showPasswordInputWithOptions = this.showPasswordInputWithOptions.bind(this)
-  }
-
-  showTextInput () {
+  showTextInput = () => {
     this.dialog.show({
       body: 'Input your message.',
       prompt: Dialog.TextPrompt(),
@@ -26,7 +18,7 @@ export default class ShowPrompt extends React.Component {
     })
   }
 
-  showTextInputWithOptions () {
+  showTextInputWithOptions = () => {
     this.dialog.show({
       body: 'Input your message.',
       prompt: Dialog.TextPrompt({placeholder: 'name', initialValue: 'John Smith'}),
@@ -40,7 +32,21 @@ export default class ShowPrompt extends React.Component {
     })
   }
 
-  showPasswordInput () {
+  showTextInputWithRequiredOption = () => {
+    this.dialog.show({
+      body: 'Try enter with empty. The input field shows validation error.',
+      prompt: Dialog.TextPrompt({placeholder: 'name', initialValue: '', required: true}),
+      actions: [
+        Dialog.CancelAction(),
+        Dialog.OKAction((dialog) => {
+          const result = dialog.value
+          action(`okay! result is "${result}".`)()
+        })
+      ]
+    })
+  }
+
+  showPasswordInput = () => {
     this.dialog.show({
       body: 'Input your password.',
       prompt: Dialog.PasswordPrompt(),
@@ -54,10 +60,10 @@ export default class ShowPrompt extends React.Component {
     })
   }
 
-  showPasswordInputWithOptions () {
+  showPasswordInputWithOptions = () => {
     this.dialog.show({
       body: 'Input your password.',
-      prompt: Dialog.PasswordPrompt({placeholder: 'secret', initialValue: 'abcd'}),
+      prompt: Dialog.PasswordPrompt({placeholder: 'secret', initialValue: 'abcd', required: true}),
       actions: [
         Dialog.CancelAction(),
         Dialog.OKAction((dialog) => {
@@ -76,6 +82,9 @@ export default class ShowPrompt extends React.Component {
         </p>
         <p>
           <Button onClick={this.showTextInputWithOptions}>Text input with options</Button>
+        </p>
+        <p>
+          <Button onClick={this.showTextInputWithRequiredOption}>Text input with required option</Button>
         </p>
         <hr />
         <p>
