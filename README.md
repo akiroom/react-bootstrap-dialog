@@ -3,8 +3,8 @@
 [![npm version](https://badge.fury.io/js/react-bootstrap-dialog.svg)](https://badge.fury.io/js/react-bootstrap-dialog)
 [![Build Status](https://travis-ci.org/akiroom/react-bootstrap-dialog.svg?branch=master)](https://travis-ci.org/akiroom/react-bootstrap-dialog)
 
-The React component library for **alert or dialog** based on **[react-bootstrap](https://react-bootstrap.github.io/)'s `<Modal />`**.
-Configurable and easy to use alternative for `window.alert`, `window.confirm`, or `window.prompt` in your React application.
+The React component library for **an alert or dialog** based on **[react-bootstrap](https://react-bootstrap.github.io/)'s `<Modal />`**.
+Configurable and easy use instead of `window.alert`, `window.confirm`, or `window.prompt` in your React application.
 
 [![https://gyazo.com/d9c073c6c7d66c05e5398f386345f452](https://i.gyazo.com/d9c073c6c7d66c05e5398f386345f452.gif)](https://gyazo.com/d9c073c6c7d66c05e5398f386345f452)
 
