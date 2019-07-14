@@ -141,7 +141,8 @@ export default class Dialog extends React.Component <Props, State> {
    */
   public show (options: DialogOptions = {}) {
     const keyBinds: DialogKeyBinds = {}
-    const { actions } = options
+    const newOptions = Object.assign({}, options)
+    const { actions, prompt } = newOptions
     actions && actions.forEach((action) => {
       if (action.key) {
         action.key.split(',').forEach((key) => {
@@ -149,11 +150,38 @@ export default class Dialog extends React.Component <Props, State> {
         })
       }
     })
+
+    // If has prompt and click button assigned enter key,
+    // Execute validation at first.
+    if (actions && prompt) {
+      newOptions.actions = actions.map((action) => {
+        if (!(action.key && action.key.includes('enter'))) {
+          // Not enter button, so return
+          return action
+        }
+
+        // It's enter button, let's validate
+        const newAction = Object.assign({}, action)
+        newAction.func = (dialog) => {
+          if (!(dialog.promptInput && dialog.promptInput.checkValidity())) {
+            return
+          }
+          const action = this.keyBinds && this.keyBinds['enter']
+          action && action(dialog)
+        }
+        return newAction
+      })
+    }
     // TODO: Add keybinds
     this.keyBinds = keyBinds
-    this.setState(Dialog.initialState())
-    this.setState(options)
-    this.setState({ showModal: true })
+    this.setState(
+      Object.assign(
+        {},
+        Dialog.initialState(),
+        newOptions,
+        { showModal: true }
+      )
+    )
   }
 
   /**
@@ -202,8 +230,8 @@ export default class Dialog extends React.Component <Props, State> {
   }
 
   private onSubmitPrompt () {
-    const action = this.keyBinds && this.keyBinds['enter']
-    action && action()
+    // const action = this.keyBinds && this.keyBinds['enter']
+    // action && action()
   }
 
   private getSize (defaultSize?: DialogBsSize | null) {
