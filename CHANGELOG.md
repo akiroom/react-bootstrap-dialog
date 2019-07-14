@@ -1,3 +1,7 @@
+# v0.13.0
+
+- Add `required` option to `TextPrompt` and `PasswordPrompt`.
+
 # v0.12.0
 
 - Use TypeScript to write main code.

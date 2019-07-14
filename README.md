@@ -287,6 +287,7 @@ The prompt settings to show text input for `options.prompt` in `dialog.show`.
 - `options`: [Object] The parameters for options.
    - `initialValue`: [String] The initial value for the prompt.
    - `placeholder`: [String] The placeholder for the prompt.
+   - `required`: [Boolean] If true, prevent to close dialog without input text value.
 
 ##### Example
 
@@ -305,6 +306,7 @@ The prompt settings to show password input for `options.prompt` in `dialog.show`
 - `options`: [Object] The parameters for options.
    - `initialValue`: [String] The initial value for the prompt.
    - `placeholder`: [String] The placeholder for the prompt.
+   - `required`: [Boolean] If true, prevent to close dialog without input password value.
 
 ##### Example
 
