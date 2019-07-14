@@ -1,9 +1,7 @@
 import React from 'react'
-import * as ReactBootstrap from 'react-bootstrap'
+import ReactBootstrap, { Modal } from 'react-bootstrap'
 import {TextPrompt, PasswordPrompt, DialogPrompt, DialogPromptOptions} from './Prompts'
 import PromptInput from './PromptInput'
-
-const Modal = ReactBootstrap.Modal
 
 type DialogTitle = React.ReactNode
 type DialogBody = React.ReactNode
@@ -50,7 +48,7 @@ interface State {
  * @example this.dialog.show({body: 'Hello!', actions: [Dialog.Action('do', () => console.log('ok'))]})
  * @example this.dialog.showAlert('Hello!')
  */
-class Dialog extends React.Component <Props, State> {
+export default class Dialog extends React.Component <Props, State> {
   static readonly DEFAULT_OPTIONS = {
     defaultOkLabel: 'OK',
     defaultCancelLabel: 'Cancel',
@@ -255,7 +253,7 @@ class Dialog extends React.Component <Props, State> {
  * The class to construct a choice for Dialog.
  * Use `Dialog.Action(options)`.
  */
-class DialogAction {
+export class DialogAction {
   _func?: DialogActionCallback | null
   label: DialogActionLabel
   className: string
@@ -278,5 +276,3 @@ class DialogAction {
     this._func && this._func(dialog)
   }
 }
-
-module.exports = Dialog
