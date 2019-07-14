@@ -1,19 +1,24 @@
-import React from 'react';
+import React from 'react'
+import { storiesOf } from '@storybook/react'
+import 'bootstrap/dist/css/bootstrap.css'
+import ShowAlert from './stories/ShowAlert'
+import ShowOkCancelDialog from './stories/ShowOkCancelDialog'
+import ShowWithOnHide from './stories/ShowWithOnHide'
+import ShowWarningDialog from './stories/ShowWarningDialog'
+import ShowCustomDialog from './stories/ShowCustomDialog'
+import ShowDialogWithChangedOptions from './stories/ShowDialogWithChangedOptions'
+import ShowPrompt from './stories/ShowPrompt'
 
-import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
-import { linkTo } from '@storybook/addon-links';
-
-import { Button, Welcome } from '@storybook/react/demo';
-
-storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
-
-storiesOf('Button', module)
-  .add('with text', () => <Button onClick={action('clicked')}>Hello Button</Button>)
-  .add('with some emoji', () => (
-    <Button onClick={action('clicked')}>
-      <span role="img" aria-label="so cool">
-        😀 😎 👍 💯
-      </span>
-    </Button>
-  ));
+storiesOf('Dialog', module)
+  .addDecorator((story) => (
+    <div style={{margin: '20px'}}>
+      {story()}
+    </div>
+  ))
+  .add('Alert', () => (<ShowAlert />))
+  .add('OK/Cancel', () => (<ShowOkCancelDialog />))
+  .add('onHide event', () => (<ShowWithOnHide />))
+  .add('Warning dialog', () => (<ShowWarningDialog />))
+  .add('Custom dialog', () => (<ShowCustomDialog />))
+  .add('Global options', () => (<ShowDialogWithChangedOptions />))
+  .add('Prompt', () => (<ShowPrompt />))

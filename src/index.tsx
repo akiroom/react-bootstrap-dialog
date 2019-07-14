@@ -1,8 +1,15 @@
 import React from 'react'
-import ReactBootstrap, { Modal } from 'react-bootstrap'
+import {Modal} from 'react-bootstrap'
 import {TextPrompt, PasswordPrompt, DialogPrompt, DialogPromptOptions} from './Prompts'
 import PromptInput from './PromptInput'
 import DialogAction, {DialogActionCallback, DialogActionLabel, DialogActionKey} from './DialogAction'
+
+// XXX: Check current ReactBootstrap v4 later, or not.
+
+const isLaterV4: boolean = function () {
+  const anyModal: any = Modal  // eslint-disable-line @typescript-eslint/no-explicit-any
+  return !(anyModal.childContextTypes)
+}()
 
 type DialogTitle = React.ReactNode
 type DialogBody = React.ReactNode
@@ -189,8 +196,6 @@ export default class Dialog extends React.Component <Props, State> {
   }
 
   render () {
-    // XXX: Check current ReactBootstrap v4, or not.
-    const isLaterV4 = !!ReactBootstrap['Card']
     const additionalProps = (
       isLaterV4 ? {
         size: this.getSize('sm')
