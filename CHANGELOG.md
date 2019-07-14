@@ -4,6 +4,7 @@
     - Now, we have type definitions.🎉
 - Update storybook from 3.3.12 to 5.1.9
 - Update dependent node version from 6.x to 12.x
+- Fix dependencies vulnerability issues.
 
 # v0.11.0
 
