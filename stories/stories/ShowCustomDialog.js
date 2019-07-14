@@ -37,7 +37,7 @@ export default class ShowCustomDialog extends React.Component {
           'btn-info'
         ),
         Dialog.Action(
-          <span style={{fontWeight: 'bold', fontStyle: 'underline'}}>Success</span>,
+          <span style={{fontWeight: 'bold', textDecoration: 'underline'}}>Success</span>,
           () => action('Success button was clicked!')(),
           'btn-success'
         )
