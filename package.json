@@ -7,7 +7,10 @@
     "url": "https://github.com/akiroom/react-bootstrap-dialog.git"
   },
   "license": "MIT",
-  "author": "akiroom (http://akiyama.akiroom.com/en/)",
+  "author": {
+    "name": "akiroom",
+    "url": "http://akiyama.akiroom.com/en/"
+  },
   "keywords": [
     "react",
     "bootstrap",
@@ -16,7 +19,9 @@
     "dialog",
     "alert",
     "confirm",
-    "modal"
+    "modal",
+    "window.alert",
+    "window.confirm"
   ],
   "scripts": {
     "prepublish": ". ./.scripts/prepublish.sh",
