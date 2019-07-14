@@ -46,6 +46,8 @@
     "eslint": "^6.0.1",
     "eslint-plugin-react": "^7.14.2",
     "git-url-parse": "^6.0.1",
+    "jquery": "^3.4.1",
+    "popper.js": "^1.15.0",
     "react": "^16.7.0",
     "react-bootstrap": "^1.0.0-beta.5",
     "react-dom": "^16.7.0",
