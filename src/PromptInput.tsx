@@ -1,14 +1,14 @@
 import React from 'react'
-import {PasswordPrompt} from './Prompts'
+import {DialogPrompt, PasswordPrompt} from './Prompts'
 
 interface Props {
-  prompt: any,
-  onSubmit: () => void
+  prompt: DialogPrompt;
+  onSubmit: () => void;
 }
 interface State {
-  value: string,
-  initialValue: string,
-  placeholder: string
+  value: string;
+  initialValue?: string;
+  placeholder?: string;
 }
 
 export default class PromptInput extends React.Component <Props, State> {

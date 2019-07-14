@@ -1,6 +1,6 @@
-export type DialogPromptOptions = {
-  initialValue?: string,
-  placeholder?: string
+export interface DialogPromptOptions {
+  initialValue?: string;
+  placeholder?: string;
 }
 
 /**

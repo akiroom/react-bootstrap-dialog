@@ -30,6 +30,10 @@ module.exports = {
         "react"
     ],
     rules: {
+        "@typescript-eslint/indent": ["error", 2],
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/explicit-member-accessibility": "off",
+        "@typescript-eslint/no-empty-interface": "off"
     },
     settings: {
         react: {

@@ -2,13 +2,11 @@ import React from 'react'
 import ReactBootstrap, { Modal } from 'react-bootstrap'
 import {TextPrompt, PasswordPrompt, DialogPrompt, DialogPromptOptions} from './Prompts'
 import PromptInput from './PromptInput'
+import DialogAction, {DialogActionCallback, DialogActionLabel, DialogActionKey} from './DialogAction'
 
 type DialogTitle = React.ReactNode
 type DialogBody = React.ReactNode
-type DialogActionLabel = React.ReactNode
-type DialogActionCallback = (dialog: Dialog) => void
-type DialogKey = string
-type DialogKeyBinds = {[id: string]: Function}
+interface DialogKeyBinds {[id: string]: Function}
 /**
  * DialogBsSize has any type.
  * Because react-bootstrap has different types between v3 and v4.
@@ -17,29 +15,28 @@ type DialogKeyBinds = {[id: string]: Function}
  * v3 earlier has "small"
  * v4 later has "sm"
  */
-type DialogBsSize = any
+type DialogBsSize = any // eslint-disable-line @typescript-eslint/no-explicit-any
 
 
-export type DialogOptions = {
-  showModal?: boolean,
-  actions?: Array<DialogAction>,
-  defaultOkLabel?: string,
-  defaultCancelLabel?: string,
-  primaryClassName?: string
-  defaultButtonClassName?: string,
+export interface DialogOptions {
+  showModal?: boolean;
+  actions?: DialogAction[];
+  defaultOkLabel?: string;
+  defaultCancelLabel?: string;
+  primaryClassName?: string;
+  defaultButtonClassName?: string;
 }
 
 interface Props {
-
 }
 interface State {
-  title?: DialogTitle | null,
-  body?: DialogBody | null,
-  showModal?: boolean,
-  actions?: Array<DialogAction>,
-  bsSize?: DialogBsSize,
-  onHide?: ((dialog: Dialog) => void) | null,
-  prompt?: DialogPrompt | null
+  title?: DialogTitle | null;
+  body?: DialogBody | null;
+  showModal?: boolean;
+  actions?: DialogAction[];
+  bsSize?: DialogBsSize;
+  onHide?: ((dialog: Dialog) => void) | null;
+  prompt?: DialogPrompt | null;
 }
 
 /**
@@ -59,7 +56,7 @@ export default class Dialog extends React.Component <Props, State> {
   promptInput: PromptInput | null = null
   keyBinds: DialogKeyBinds |  null = {}
 
-  static Action = (label: DialogActionLabel | null | undefined, func: DialogActionCallback | null | undefined, className: string | null | undefined, key: DialogKey) => new DialogAction(label, func, className, key)
+  static Action = (label: DialogActionLabel | null | undefined, func: DialogActionCallback | null | undefined, className: string | null | undefined, key: DialogActionKey) => new DialogAction(label, func, className, key)
   static DefaultAction = (label: DialogActionLabel | null | undefined, func: DialogActionCallback | null | undefined, className: string | null | undefined) => new DialogAction(label, func, className && className.length > 0 ? className : Dialog.options.primaryClassName, 'enter')
   static OKAction = (func: DialogActionCallback | null | undefined) => new DialogAction(Dialog.options.defaultOkLabel, (dialog) => { dialog.hide(); func && func(dialog) }, Dialog.options.primaryClassName, 'enter')
   static CancelAction = (func: DialogActionCallback | null | undefined) => new DialogAction(Dialog.options.defaultCancelLabel, (dialog) => { dialog.hide(); func && func(dialog) }, null, 'esc')
@@ -120,9 +117,9 @@ export default class Dialog extends React.Component <Props, State> {
    * @param options.onHide {function} The method to call when the dialog was closed by clicking background.
    * @param options.prompt {[null, Prompt]} Use prompt for text input or password input.
    */
-  show (options: DialogOptions = {}) {
-    let keyBinds: DialogKeyBinds = {}
-    let { actions = [] } = options
+  public show (options: DialogOptions = {}) {
+    const keyBinds: DialogKeyBinds = {}
+    const { actions = [] } = options
     actions.forEach((action) => {
       if (action.key) {
         action.key.split(',').forEach((key) => {
@@ -142,7 +139,7 @@ export default class Dialog extends React.Component <Props, State> {
    * @param body The body of message.
    * @param bsSize {[null, 'medium', 'large', 'small']} The width size for dialog.
    */
-  showAlert (body: DialogBody, bsSize = undefined) {
+  public showAlert (body: DialogBody, bsSize = undefined) {
     const options = {
       body: body,
       actions: [
@@ -153,7 +150,7 @@ export default class Dialog extends React.Component <Props, State> {
     this.show(options)
   }
 
-  onHide () {
+  private onHide () {
     const onHide = this.state.onHide
     if (typeof onHide === 'function') {
       onHide(this)
@@ -165,7 +162,7 @@ export default class Dialog extends React.Component <Props, State> {
   /**
    * Hide this dialog.
    */
-  hide () {
+  public hide () {
     if (!this.state.showModal) return
     // TODO: Remove keybinds
     this.setState({showModal: false})
@@ -182,12 +179,12 @@ export default class Dialog extends React.Component <Props, State> {
     return null
   }
 
-  onSubmitPrompt () {
+  private onSubmitPrompt () {
     const action = this.keyBinds && this.keyBinds['enter']
     action && action()
   }
 
-  getSize (defaultSize?: DialogBsSize | null) {
+  private getSize (defaultSize?: DialogBsSize | null) {
     return (typeof this.state.bsSize) === 'undefined' ? defaultSize : (this.state.bsSize === 'medium' ? null : this.state.bsSize)
   }
 
@@ -246,33 +243,5 @@ export default class Dialog extends React.Component <Props, State> {
         </Modal.Footer>
       </Modal>
     )
-  }
-}
-
-/**
- * The class to construct a choice for Dialog.
- * Use `Dialog.Action(options)`.
- */
-export class DialogAction {
-  _func?: DialogActionCallback | null
-  label: DialogActionLabel
-  className: string
-  key?: string | null
-  /**
-   * Constructor
-   * @param label The text or node for button. Default is `OK`.
-   * @param func The function to execute when button is clicked. Default is null.
-   * @param className The class name for button. Default is ''.
-   */
-  constructor (label: DialogActionLabel | null | undefined, func: DialogActionCallback | null | undefined, className: string | null |undefined, key: DialogKey | null | undefined) {
-    this.label = label || Dialog.options.defaultOkLabel
-    this._func = func
-    this.className = className || Dialog.options.defaultButtonClassName || Dialog.DEFAULT_OPTIONS.defaultButtonClassName
-    this.key = key
-  }
-
-  func (dialog: Dialog) {
-    dialog.hide()
-    this._func && this._func(dialog)
   }
 }
