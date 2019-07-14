@@ -20,16 +20,16 @@
   ],
   "scripts": {
     "prepublish": ". ./.scripts/prepublish.sh",
-    "testonly": "mocha --require .scripts/mocha_runner src/**/tests/**/*.js",
-    "test": "lint && testonly",
+    "test": "yarn run lint",
     "test-watch": "yarn run testonly -- --watch --watch-extensions js",
     "storybook": "start-storybook -p 6006",
-    "publish-storybook": "bash .scripts/publish_storybook.sh",
     "deploy-storybook": "storybook-to-ghpages",
     "build-storybook": "build-storybook",
     "build": "tsc",
     "lint": "eslint ./src/**.tsx",
-    "lint:fix": "yarn run lint --fix"
+    "lint:fix": "yarn run lint --fix",
+
+    "publish-storybook": "bash .scripts/publish_storybook.sh"
   },
   "devDependencies": {
     "@kadira/storybook-deployer": "^1.2.0",
@@ -53,7 +53,6 @@
     "git-url-parse": "^6.0.1",
     "jest": "^24.8.0",
     "jsdom": "^8.3.1",
-    "mocha": "^2.4.5",
     "react": "^16.7.0",
     "react-addons-test-utils": "^15.6.2",
     "react-bootstrap": "^1.0.0-beta.5",
