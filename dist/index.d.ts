@@ -1,9 +1,10 @@
 import React from 'react';
 import { TextPrompt, PasswordPrompt, DialogPrompt, DialogPromptOptions } from './Prompts';
 import PromptInput from './PromptInput';
-import DialogAction, { DialogActionCallback } from './DialogAction';
+import DialogAction, { DialogActionCallback, DialogActionLabel } from './DialogAction';
 declare type DialogTitle = React.ReactNode;
 declare type DialogBody = React.ReactNode;
+declare type DialogOnHideClalback = ((dialog: Dialog) => void);
 interface DialogKeyBinds {
     [id: string]: Function;
 }
@@ -16,13 +17,19 @@ interface DialogKeyBinds {
  * v4 later has "sm"
  */
 declare type DialogBsSize = any;
-export interface DialogOptions {
-    showModal?: boolean;
-    actions?: DialogAction[];
-    defaultOkLabel?: string;
-    defaultCancelLabel?: string;
+export interface DialogGlobalOptions {
+    defaultOkLabel?: DialogActionLabel;
+    defaultCancelLabel?: DialogActionLabel;
     primaryClassName?: string;
     defaultButtonClassName?: string;
+}
+export interface DialogOptions {
+    title?: DialogTitle | null;
+    body?: DialogBody | null;
+    actions?: DialogAction[] | null;
+    bsSize?: DialogBsSize | null;
+    onHide?: DialogOnHideClalback | null;
+    prompt?: DialogPrompt | null;
 }
 interface Props {
 }
@@ -30,9 +37,9 @@ interface State {
     title?: DialogTitle | null;
     body?: DialogBody | null;
     showModal?: boolean;
-    actions?: DialogAction[];
-    bsSize?: DialogBsSize;
-    onHide?: ((dialog: Dialog) => void) | null;
+    actions?: DialogAction[] | null;
+    bsSize?: DialogBsSize | null;
+    onHide?: DialogOnHideClalback | null;
     prompt?: DialogPrompt | null;
 }
 /**
@@ -48,7 +55,7 @@ export default class Dialog extends React.Component<Props, State> {
         primaryClassName: string;
         defaultButtonClassName: string;
     };
-    static options: DialogOptions;
+    static options: DialogGlobalOptions;
     promptInput: PromptInput | null;
     keyBinds: DialogKeyBinds | null;
     static Action: (label: React.ReactNode, func: DialogActionCallback | null | undefined, className: string | null | undefined, key: string) => DialogAction;
@@ -63,7 +70,7 @@ export default class Dialog extends React.Component<Props, State> {
      * Set default options for applying to all dialogs.
      * @param options
      */
-    static setOptions(options: DialogOptions): void;
+    static setOptions(options: DialogGlobalOptions): void;
     /**
      * Reset default options to presets.
      */

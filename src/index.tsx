@@ -13,6 +13,7 @@ const isLaterV4: boolean = function () {
 
 type DialogTitle = React.ReactNode
 type DialogBody = React.ReactNode
+type DialogOnHideClalback = ((dialog: Dialog) => void)
 interface DialogKeyBinds {[id: string]: Function}
 /**
  * DialogBsSize has any type.
@@ -24,25 +25,39 @@ interface DialogKeyBinds {[id: string]: Function}
  */
 type DialogBsSize = any // eslint-disable-line @typescript-eslint/no-explicit-any
 
-
-export interface DialogOptions {
-  showModal?: boolean;
-  actions?: DialogAction[];
-  defaultOkLabel?: string;
-  defaultCancelLabel?: string;
+export interface DialogGlobalOptions {
+  defaultOkLabel?: DialogActionLabel;
+  defaultCancelLabel?: DialogActionLabel;
   primaryClassName?: string;
   defaultButtonClassName?: string;
 }
 
+export interface DialogOptions {
+  title?: DialogTitle | null;
+  body?: DialogBody | null;
+  actions?: DialogAction[] | null;
+  bsSize?: DialogBsSize | null;
+  onHide?: DialogOnHideClalback | null;
+  prompt?: DialogPrompt | null;
+}
+/*
+   * @param options.title The title of dialog.
+   * @param options.body The body of message.
+   * @param options.actions {DialogAction} The choices for presenting to user.
+   * @param options.bsSize {[null, 'medium', 'large', 'small']} The width size for dialog.
+   * @param options.onHide {function} The method to call when the dialog was closed by clicking background.
+   * @param options.prompt {[null, Prompt]} Use prompt for text input or password input.
+
+ */
 interface Props {
 }
 interface State {
   title?: DialogTitle | null;
   body?: DialogBody | null;
   showModal?: boolean;
-  actions?: DialogAction[];
-  bsSize?: DialogBsSize;
-  onHide?: ((dialog: Dialog) => void) | null;
+  actions?: DialogAction[] | null;
+  bsSize?: DialogBsSize | null;
+  onHide?: DialogOnHideClalback | null;
   prompt?: DialogPrompt | null;
 }
 
@@ -59,7 +74,7 @@ export default class Dialog extends React.Component <Props, State> {
     primaryClassName: 'btn-primary',
     defaultButtonClassName: 'btn-default btn-outline-secondary'
   }
-  static options: DialogOptions = Dialog.DEFAULT_OPTIONS
+  static options: DialogGlobalOptions = Dialog.DEFAULT_OPTIONS
   promptInput: PromptInput | null = null
   keyBinds: DialogKeyBinds |  null = {}
 
@@ -78,7 +93,7 @@ export default class Dialog extends React.Component <Props, State> {
    * Set default options for applying to all dialogs.
    * @param options
    */
-  static setOptions (options: DialogOptions) {
+  static setOptions (options: DialogGlobalOptions) {
     Dialog.options = Object.assign({}, Dialog.DEFAULT_OPTIONS, options)
   }
 
@@ -126,8 +141,8 @@ export default class Dialog extends React.Component <Props, State> {
    */
   public show (options: DialogOptions = {}) {
     const keyBinds: DialogKeyBinds = {}
-    const { actions = [] } = options
-    actions.forEach((action) => {
+    const { actions } = options
+    actions && actions.forEach((action) => {
       if (action.key) {
         action.key.split(',').forEach((key) => {
           keyBinds[key] = () => { action.func && action.func(this) }
@@ -136,9 +151,9 @@ export default class Dialog extends React.Component <Props, State> {
     })
     // TODO: Add keybinds
     this.keyBinds = keyBinds
-    options['showModal'] = true
     this.setState(Dialog.initialState())
     this.setState(options)
+    this.setState({ showModal: true })
   }
 
   /**

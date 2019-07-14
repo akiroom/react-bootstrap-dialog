@@ -97,8 +97,8 @@ var Dialog = /** @class */ (function (_super) {
         var _this = this;
         if (options === void 0) { options = {}; }
         var keyBinds = {};
-        var _a = options.actions, actions = _a === void 0 ? [] : _a;
-        actions.forEach(function (action) {
+        var actions = options.actions;
+        actions && actions.forEach(function (action) {
             if (action.key) {
                 action.key.split(',').forEach(function (key) {
                     keyBinds[key] = function () { action.func && action.func(_this); };
@@ -107,9 +107,9 @@ var Dialog = /** @class */ (function (_super) {
         });
         // TODO: Add keybinds
         this.keyBinds = keyBinds;
-        options['showModal'] = true;
         this.setState(Dialog.initialState());
         this.setState(options);
+        this.setState({ showModal: true });
     };
     /**
      * Show message dialog This is similar to `window.alert`.
