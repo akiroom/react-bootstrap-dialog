@@ -1,9 +1,48 @@
 import React from 'react'
 import * as ReactBootstrap from 'react-bootstrap'
-import {TextPrompt, PasswordPrompt} from './Prompts'
+import {TextPrompt, PasswordPrompt, DialogPrompt, DialogPromptOptions} from './Prompts'
 import PromptInput from './PromptInput'
 
 const Modal = ReactBootstrap.Modal
+
+type DialogTitle = React.ReactNode
+type DialogBody = React.ReactNode
+type DialogActionLabel = React.ReactNode
+type DialogActionCallback = (dialog: Dialog) => void
+type DialogKey = string
+type DialogKeyBinds = {[id: string]: Function}
+/**
+ * DialogBsSize has any type.
+ * Because react-bootstrap has different types between v3 and v4.
+ *
+ * e.g.
+ * v3 earlier has "small"
+ * v4 later has "sm"
+ */
+type DialogBsSize = any
+
+
+export type DialogOptions = {
+  showModal?: boolean,
+  actions?: Array<DialogAction>,
+  defaultOkLabel?: string,
+  defaultCancelLabel?: string,
+  primaryClassName?: string
+  defaultButtonClassName?: string,
+}
+
+interface Props {
+
+}
+interface State {
+  title?: DialogTitle | null,
+  body?: DialogBody | null,
+  showModal?: boolean,
+  actions?: Array<DialogAction>,
+  bsSize?: DialogBsSize,
+  onHide?: ((dialog: Dialog) => void) | null,
+  prompt?: DialogPrompt | null
+}
 
 /**
  * The modal dialog which can be altenative to `window.confirm` and `window.alert`.
@@ -11,12 +50,33 @@ const Modal = ReactBootstrap.Modal
  * @example this.dialog.show({body: 'Hello!', actions: [Dialog.Action('do', () => console.log('ok'))]})
  * @example this.dialog.showAlert('Hello!')
  */
-class Dialog extends React.Component {
+class Dialog extends React.Component <Props, State> {
+  static readonly DEFAULT_OPTIONS = {
+    defaultOkLabel: 'OK',
+    defaultCancelLabel: 'Cancel',
+    primaryClassName: 'btn-primary',
+    defaultButtonClassName: 'btn-default btn-outline-secondary'
+  }
+  static options: DialogOptions = Dialog.DEFAULT_OPTIONS
+  promptInput: PromptInput | null = null
+  keyBinds: DialogKeyBinds |  null = {}
+
+  static Action = (label: DialogActionLabel | null | undefined, func: DialogActionCallback | null | undefined, className: string | null | undefined, key: DialogKey) => new DialogAction(label, func, className, key)
+  static DefaultAction = (label: DialogActionLabel | null | undefined, func: DialogActionCallback | null | undefined, className: string | null | undefined) => new DialogAction(label, func, className && className.length > 0 ? className : Dialog.options.primaryClassName, 'enter')
+  static OKAction = (func: DialogActionCallback | null | undefined) => new DialogAction(Dialog.options.defaultOkLabel, (dialog) => { dialog.hide(); func && func(dialog) }, Dialog.options.primaryClassName, 'enter')
+  static CancelAction = (func: DialogActionCallback | null | undefined) => new DialogAction(Dialog.options.defaultCancelLabel, (dialog) => { dialog.hide(); func && func(dialog) }, null, 'esc')
+  static SingleOKAction = () => new DialogAction(Dialog.options.defaultOkLabel, (dialog) => { dialog.hide() }, Dialog.options.primaryClassName, 'enter,esc')
+
+  static TextPrompt = (options: DialogPromptOptions) => new TextPrompt(options)
+  static PasswordPrompt = (options: DialogPromptOptions) => new PasswordPrompt(options)
+
+  static displayName = 'Dialog'
+
   /**
    * Set default options for applying to all dialogs.
    * @param options
    */
-  static setOptions (options) {
+  static setOptions (options: DialogOptions) {
     Dialog.options = Object.assign({}, Dialog.DEFAULT_OPTIONS, options)
   }
 
@@ -27,7 +87,7 @@ class Dialog extends React.Component {
     Dialog.options = Dialog.DEFAULT_OPTIONS
   }
 
-  static initialState () {
+  static initialState (): State {
     return {
       title: null,
       body: null,
@@ -39,10 +99,8 @@ class Dialog extends React.Component {
     }
   }
 
-  constructor (props) {
+  constructor (props: Props) {
     super(props)
-    this.promptInput = null
-    this.keyBinds = []
     this.state = Dialog.initialState()
     this.onHide = this.onHide.bind(this)
     this.onSubmitPrompt = this.onSubmitPrompt.bind(this)
@@ -64,9 +122,9 @@ class Dialog extends React.Component {
    * @param options.onHide {function} The method to call when the dialog was closed by clicking background.
    * @param options.prompt {[null, Prompt]} Use prompt for text input or password input.
    */
-  show (options = {}) {
-    let keyBinds = {}
-    let actions = options.actions || []
+  show (options: DialogOptions = {}) {
+    let keyBinds: DialogKeyBinds = {}
+    let { actions = [] } = options
     actions.forEach((action) => {
       if (action.key) {
         action.key.split(',').forEach((key) => {
@@ -86,7 +144,7 @@ class Dialog extends React.Component {
    * @param body The body of message.
    * @param bsSize {[null, 'medium', 'large', 'small']} The width size for dialog.
    */
-  showAlert (body, bsSize = undefined) {
+  showAlert (body: DialogBody, bsSize = undefined) {
     const options = {
       body: body,
       actions: [
@@ -127,11 +185,11 @@ class Dialog extends React.Component {
   }
 
   onSubmitPrompt () {
-    const action = this.keyBinds['enter']
+    const action = this.keyBinds && this.keyBinds['enter']
     action && action()
   }
 
-  getSize (defaultSize) {
+  getSize (defaultSize?: DialogBsSize | null) {
     return (typeof this.state.bsSize) === 'undefined' ? defaultSize : (this.state.bsSize === 'medium' ? null : this.state.bsSize)
   }
 
@@ -174,7 +232,7 @@ class Dialog extends React.Component {
         </Modal.Body>
         <Modal.Footer>
           {
-            this.state.actions.map((action, index) => {
+            this.state.actions && this.state.actions.map((action, index) => {
               return (
                 <button
                   key={index}
@@ -198,42 +256,27 @@ class Dialog extends React.Component {
  * Use `Dialog.Action(options)`.
  */
 class DialogAction {
+  _func?: DialogActionCallback | null
+  label: DialogActionLabel
+  className: string
+  key?: string | null
   /**
    * Constructor
    * @param label The text or node for button. Default is `OK`.
    * @param func The function to execute when button is clicked. Default is null.
    * @param className The class name for button. Default is ''.
    */
-  constructor (label, func, className, key) {
+  constructor (label: DialogActionLabel | null | undefined, func: DialogActionCallback | null | undefined, className: string | null |undefined, key: DialogKey | null | undefined) {
     this.label = label || Dialog.options.defaultOkLabel
     this._func = func
-    this.className = className || Dialog.options.defaultButtonClassName
+    this.className = className || Dialog.options.defaultButtonClassName || Dialog.DEFAULT_OPTIONS.defaultButtonClassName
     this.key = key
   }
 
-  func (dialog) {
+  func (dialog: Dialog) {
     dialog.hide()
     this._func && this._func(dialog)
   }
 }
 
-Dialog.DEFAULT_OPTIONS = {
-  defaultOkLabel: 'OK',
-  defaultCancelLabel: 'Cancel',
-  primaryClassName: 'btn-primary',
-  defaultButtonClassName: 'btn-default btn-outline-secondary'
-}
-
-Dialog.options = Dialog.DEFAULT_OPTIONS
-
-Dialog.Action = (label, func, className, key) => new DialogAction(label, func, className, key)
-Dialog.DefaultAction = (label, func, className) => new DialogAction(label, func, className && className.length > 0 ? className : Dialog.options.primaryClassName, 'enter')
-Dialog.OKAction = (func) => new DialogAction(Dialog.options.defaultOkLabel, (dialog) => { dialog.hide(); func && func(dialog) }, Dialog.options.primaryClassName, 'enter')
-Dialog.CancelAction = (func) => new DialogAction(Dialog.options.defaultCancelLabel, (dialog) => { dialog.hide(); func && func(dialog) }, null, 'esc')
-Dialog.SingleOKAction = () => new DialogAction(Dialog.options.defaultOkLabel, (dialog) => { dialog.hide() }, Dialog.options.primaryClassName, 'enter,esc')
-
-Dialog.TextPrompt = (options) => new TextPrompt(options)
-Dialog.PasswordPrompt = (options) => new PasswordPrompt(options)
-
-Dialog.displayName = 'Dialog'
 module.exports = Dialog

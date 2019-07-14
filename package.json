@@ -27,14 +27,16 @@
     "storybook": "start-storybook -p 6006",
     "publish-storybook": "bash .scripts/publish_storybook.sh",
     "deploy-storybook": "storybook-to-ghpages",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "build": "tsc"
   },
   "devDependencies": {
     "@kadira/storybook-deployer": "^1.2.0",
-    "@storybook/addon-actions": "^3.3.12",
-    "@storybook/addon-links": "^3.3.12",
-    "@storybook/addons": "^3.3.12",
-    "@storybook/react": "^3.3.12",
+    "@storybook/addon-actions": "^5.1.9",
+    "@storybook/addon-links": "^5.1.9",
+    "@storybook/addons": "^5.1.9",
+    "@storybook/react": "^5.1.9",
+    "@types/react": "^16.8.23",
     "babel-cli": "^6.23.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^6.2.4",
@@ -54,13 +56,16 @@
     "react-dom": "^16.7.0",
     "sinon": "^1.17.3",
     "standard": "^8.0.0",
+    "typescript": "^3.5.3",
     "url-loader": "^0.6.2",
     "webpack": "^2.0.0"
   },
   "peerDependencies": {
     "react": "^15.0.0 || ^16.0.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "postinstall-build": "^5.0.3"
+  },
   "main": "dist/index.js",
   "engines": {
     "npm": "^3.0.0"

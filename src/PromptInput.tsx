@@ -1,8 +1,20 @@
 import React from 'react'
 import {PasswordPrompt} from './Prompts'
 
-export default class PromptInput extends React.Component {
-  constructor (props) {
+interface Props {
+  prompt: any,
+  onSubmit: () => void
+}
+interface State {
+  value: string,
+  initialValue: string,
+  placeholder: string
+}
+
+export default class PromptInput extends React.Component <Props, State> {
+  inputElement: HTMLInputElement | null
+
+  constructor (props: Props) {
     super(props)
     const {initialValue, placeholder} = props.prompt
     this.state = {
@@ -16,7 +28,7 @@ export default class PromptInput extends React.Component {
 
   componentDidMount () {
     this.setState({value: this.state.initialValue || ''}, () => {
-      this.inputElement.select()
+      this.inputElement && this.inputElement.select()
     })
   }
 
@@ -24,7 +36,7 @@ export default class PromptInput extends React.Component {
     return this.state.value
   }
 
-  onSubmit (e) {
+  onSubmit (e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     this.props.onSubmit && this.props.onSubmit()
     return false

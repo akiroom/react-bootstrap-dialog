@@ -1,9 +1,16 @@
+export type DialogPromptOptions = {
+  initialValue?: string,
+  placeholder?: string
+}
 
 /**
  * The class to represent prompt options
  */
 export class DialogPrompt {
-  constructor (options = {}) {
+  initialValue?: string
+  placeholder?: string
+
+  constructor (options: DialogPromptOptions = {}) {
     const {initialValue, placeholder} = options
     this.initialValue = initialValue
     this.placeholder = placeholder

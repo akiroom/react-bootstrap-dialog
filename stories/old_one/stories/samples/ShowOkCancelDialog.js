@@ -1,7 +1,7 @@
-import { action } from '@storybook/addon-actions'
+import { action } from '@storybook/addon-actions/dist/index'
 import React from 'react'
 import {Button} from 'react-bootstrap'
-import Dialog from '../../index'
+import Dialog from '../../../../src'
 
 export default class ShowOkCancelDialog extends React.Component {
   constructor () {
