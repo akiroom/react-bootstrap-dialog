@@ -1,7 +1,11 @@
 # React Bootstrap Dialog
 
 [![npm version](https://badge.fury.io/js/react-bootstrap-dialog.svg)](https://badge.fury.io/js/react-bootstrap-dialog)
+![NPM](https://img.shields.io/npm/l/react-bootstrap-dialog.svg)
+![npm](https://img.shields.io/npm/dm/react-bootstrap-dialog.svg)
 [![Build Status](https://travis-ci.org/akiroom/react-bootstrap-dialog.svg?branch=master)](https://travis-ci.org/akiroom/react-bootstrap-dialog)
+
+<span class="badge-patreon"><a href="https://patreon.com/akiroom" title="Donate to this project using Patreon"><img src="https://img.shields.io/badge/patreon-donate-yellow.svg" alt="Patreon donate button" /></a></span>
 
 The React component library for an **alert or dialog** based on **[react-bootstrap](https://react-bootstrap.github.io/)'s `<Modal />`**.
 Configurable and easy use instead of `window.alert`, `window.confirm`, or `window.prompt` in your React application.
