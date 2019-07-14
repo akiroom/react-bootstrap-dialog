@@ -28,7 +28,6 @@
     "build": "tsc",
     "lint": "eslint ./src/**.tsx",
     "lint:fix": "yarn run lint --fix",
-
     "publish-storybook": "bash .scripts/publish_storybook.sh"
   },
   "devDependencies": {
@@ -68,9 +67,7 @@
   "peerDependencies": {
     "react": "^15.0.0 || ^16.0.0"
   },
-  "dependencies": {
-    "postinstall-build": "^5.0.3"
-  },
+  "dependencies": {},
   "main": "dist/index.js",
   "engines": {
     "npm": "^3.0.0"
