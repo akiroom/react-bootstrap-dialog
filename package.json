@@ -21,7 +21,6 @@
   "scripts": {
     "prepublish": ". ./.scripts/prepublish.sh",
     "test": "yarn run lint",
-    "test-watch": "yarn run testonly -- --watch --watch-extensions js",
     "storybook": "start-storybook -p 6006",
     "deploy-storybook": "storybook-to-ghpages",
     "build-storybook": "build-storybook",
