@@ -49,7 +49,7 @@ export default class PromptInput extends React.Component <Props, State> {
 
   onSubmit (e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    if (this.checkValidity()) {
+    if (!this.checkValidity()) {
       return false
     }
     this.props.onSubmit && this.props.onSubmit()

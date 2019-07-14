@@ -143,35 +143,37 @@ export default class Dialog extends React.Component <Props, State> {
     const keyBinds: DialogKeyBinds = {}
     const newOptions = Object.assign({}, options)
     const { actions, prompt } = newOptions
-    actions && actions.forEach((action) => {
-      if (action.key) {
-        action.key.split(',').forEach((key) => {
-          keyBinds[key] = () => { action.func && action.func(this) }
-        })
-      }
-    })
 
     // If has prompt and click button assigned enter key,
     // Execute validation at first.
     if (actions && prompt) {
       newOptions.actions = actions.map((action) => {
-        if (!(action.key && action.key.includes('enter'))) {
+        const { label, className, key, _func } = action
+        if (!(key && key.includes('enter'))) {
           // Not enter button, so return
           return action
         }
 
         // It's enter button, let's validate
         const newAction = Object.assign({}, action)
-        newAction.func = (dialog) => {
+        newAction.func = (dialog: Dialog) => {
           if (!(dialog.promptInput && dialog.promptInput.checkValidity())) {
-            return
+            return false
           }
-          const action = this.keyBinds && this.keyBinds['enter']
-          action && action(dialog)
+          action.func(this)
         }
         return newAction
       })
     }
+
+    // Setup key binds
+    newOptions.actions && newOptions.actions.forEach((action) => {
+      if (action.key) {
+        action.key.split(',').forEach((key) => {
+          keyBinds[key] = () => { action.func(this) }
+        })
+      }
+    })
     // TODO: Add keybinds
     this.keyBinds = keyBinds
     this.setState(
@@ -230,8 +232,8 @@ export default class Dialog extends React.Component <Props, State> {
   }
 
   private onSubmitPrompt () {
-    // const action = this.keyBinds && this.keyBinds['enter']
-    // action && action()
+    const action = this.keyBinds && this.keyBinds['enter']
+    action && action()
   }
 
   private getSize (defaultSize?: DialogBsSize | null) {
