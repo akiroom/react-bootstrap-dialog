@@ -1,4 +1,4 @@
-import { action } from '@storybook/addon-actions/dist/index'
+import { action } from '@storybook/addon-actions'
 import React from 'react'
 import {Button} from 'react-bootstrap'
 import Dialog from '../../src/index'
