@@ -1,7 +1,7 @@
 import { action } from '@storybook/addon-actions'
 import React from 'react'
 import {Button} from 'react-bootstrap'
-import Dialog from '../../index'
+import Dialog from '../../src/index'
 
 export default class ShowCustomDialog extends React.Component {
   constructor () {
@@ -37,7 +37,7 @@ export default class ShowCustomDialog extends React.Component {
           'btn-info'
         ),
         Dialog.Action(
-          <span style={{fontWeight: 'bold', fontStyle: 'underline'}}>Success</span>,
+          <span style={{fontWeight: 'bold', textDecoration: 'underline'}}>Success</span>,
           () => action('Success button was clicked!')(),
           'btn-success'
         )

@@ -1,7 +1,7 @@
 import { action } from '@storybook/addon-actions'
 import React from 'react'
 import {Button} from 'react-bootstrap'
-import Dialog from '../../index'
+import Dialog from '../../src/index'
 
 export default class ShowDialogWithChangedOptions extends React.Component {
   constructor () {

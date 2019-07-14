@@ -1,13 +1,13 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import 'bootstrap/dist/css/bootstrap.css'
-import ShowAlert from './samples/ShowAlert'
-import ShowOkCancelDialog from './samples/ShowOkCancelDialog'
-import ShowWithOnHide from './samples/ShowWithOnHide'
-import ShowWarningDialog from './samples/ShowWarningDialog'
-import ShowCustomDialog from './samples/ShowCustomDialog'
-import ShowDialogWithChangedOptions from './samples/ShowDialogWithChangedOptions'
-import ShowPrompt from './samples/ShowPrompt'
+import ShowAlert from './stories/ShowAlert'
+import ShowOkCancelDialog from './stories/ShowOkCancelDialog'
+import ShowWithOnHide from './stories/ShowWithOnHide'
+import ShowWarningDialog from './stories/ShowWarningDialog'
+import ShowCustomDialog from './stories/ShowCustomDialog'
+import ShowDialogWithChangedOptions from './stories/ShowDialogWithChangedOptions'
+import ShowPrompt from './stories/ShowPrompt'
 
 storiesOf('Dialog', module)
   .addDecorator((story) => (
