@@ -2,3 +2,4 @@ node_modules
 *.log
 .idea
 storybook-static
+dist
