@@ -141,19 +141,49 @@ export default class Dialog extends React.Component <Props, State> {
    */
   public show (options: DialogOptions = {}) {
     const keyBinds: DialogKeyBinds = {}
-    const { actions } = options
-    actions && actions.forEach((action) => {
+    const newOptions = Object.assign({}, options)
+    const { actions, prompt } = newOptions
+
+    // If has prompt and click button assigned enter key,
+    // Execute validation at first.
+    if (actions && prompt) {
+      newOptions.actions = actions.map((action) => {
+        const { key } = action
+        if (!(key && key.includes('enter'))) {
+          // Not enter button, so return
+          return action
+        }
+
+        // It's enter button, let's validate
+        const newAction = Object.assign({}, action)
+        newAction.func = (dialog: Dialog) => {
+          if (!(dialog.promptInput && dialog.promptInput.checkValidity())) {
+            return false
+          }
+          action.func(this)
+        }
+        return newAction
+      })
+    }
+
+    // Setup key binds
+    newOptions.actions && newOptions.actions.forEach((action) => {
       if (action.key) {
         action.key.split(',').forEach((key) => {
-          keyBinds[key] = () => { action.func && action.func(this) }
+          keyBinds[key] = () => { action.func(this) }
         })
       }
     })
     // TODO: Add keybinds
     this.keyBinds = keyBinds
-    this.setState(Dialog.initialState())
-    this.setState(options)
-    this.setState({ showModal: true })
+    this.setState(
+      Object.assign(
+        {},
+        Dialog.initialState(),
+        newOptions,
+        { showModal: true }
+      )
+    )
   }
 
   /**

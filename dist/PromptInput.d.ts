@@ -10,10 +10,12 @@ interface State {
     placeholder?: string;
 }
 export default class PromptInput extends React.Component<Props, State> {
+    formElement: HTMLFormElement | null;
     inputElement: HTMLInputElement | null;
     constructor(props: Props);
     componentDidMount(): void;
     readonly value: string;
+    checkValidity(): boolean;
     onSubmit(e: React.FormEvent<HTMLFormElement>): boolean;
     render(): JSX.Element;
 }

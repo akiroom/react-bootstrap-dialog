@@ -12,7 +12,8 @@ interface State {
 }
 
 export default class PromptInput extends React.Component <Props, State> {
-  inputElement: HTMLInputElement | null
+  formElement: HTMLFormElement | null = null
+  inputElement: HTMLInputElement | null = null
 
   constructor (props: Props) {
     super(props)
@@ -22,7 +23,6 @@ export default class PromptInput extends React.Component <Props, State> {
       initialValue,
       placeholder
     }
-    this.inputElement = null
     this.onSubmit = this.onSubmit.bind(this)
   }
 
@@ -36,8 +36,22 @@ export default class PromptInput extends React.Component <Props, State> {
     return this.state.value
   }
 
+  public checkValidity () {
+    const { formElement } = this
+    if (formElement) {
+      if (!formElement.checkValidity()) {
+        formElement.reportValidity()
+        return false
+      }
+    }
+    return true
+  }
+
   onSubmit (e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
+    if (!this.checkValidity()) {
+      return false
+    }
     this.props.onSubmit && this.props.onSubmit()
     return false
   }
@@ -47,7 +61,7 @@ export default class PromptInput extends React.Component <Props, State> {
     const {value, placeholder} = this.state
     const type = (prompt instanceof PasswordPrompt) ? 'password' : 'text'
     return (
-      <form onSubmit={this.onSubmit}>
+      <form ref={(el) =>{ this.formElement = el }} onSubmit={this.onSubmit}>
         <input
           ref={(el) => { this.inputElement = el }}
           type={type}
@@ -55,6 +69,7 @@ export default class PromptInput extends React.Component <Props, State> {
           value={value}
           placeholder={placeholder}
           onChange={(e) => this.setState({value: e.target.value})}
+          required={prompt.required}
           autoFocus
         />
       </form>

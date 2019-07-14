@@ -97,19 +97,39 @@ var Dialog = /** @class */ (function (_super) {
         var _this = this;
         if (options === void 0) { options = {}; }
         var keyBinds = {};
-        var actions = options.actions;
-        actions && actions.forEach(function (action) {
+        var newOptions = Object.assign({}, options);
+        var actions = newOptions.actions, prompt = newOptions.prompt;
+        // If has prompt and click button assigned enter key,
+        // Execute validation at first.
+        if (actions && prompt) {
+            newOptions.actions = actions.map(function (action) {
+                var key = action.key;
+                if (!(key && key.includes('enter'))) {
+                    // Not enter button, so return
+                    return action;
+                }
+                // It's enter button, let's validate
+                var newAction = Object.assign({}, action);
+                newAction.func = function (dialog) {
+                    if (!(dialog.promptInput && dialog.promptInput.checkValidity())) {
+                        return false;
+                    }
+                    action.func(_this);
+                };
+                return newAction;
+            });
+        }
+        // Setup key binds
+        newOptions.actions && newOptions.actions.forEach(function (action) {
             if (action.key) {
                 action.key.split(',').forEach(function (key) {
-                    keyBinds[key] = function () { action.func && action.func(_this); };
+                    keyBinds[key] = function () { action.func(_this); };
                 });
             }
         });
         // TODO: Add keybinds
         this.keyBinds = keyBinds;
-        this.setState(Dialog.initialState());
-        this.setState(options);
-        this.setState({ showModal: true });
+        this.setState(Object.assign({}, Dialog.initialState(), newOptions, { showModal: true }));
     };
     /**
      * Show message dialog This is similar to `window.alert`.
