@@ -58,10 +58,10 @@ export default class Dialog extends React.Component<Props, State> {
     static options: DialogGlobalOptions;
     promptInput: PromptInput | null;
     keyBinds: DialogKeyBinds | null;
-    static Action: (label: React.ReactNode, func: DialogActionCallback | null | undefined, className: string | null | undefined, key: string) => DialogAction;
-    static DefaultAction: (label: React.ReactNode, func: DialogActionCallback | null | undefined, className: string | null | undefined) => DialogAction;
-    static OKAction: (func: DialogActionCallback | null | undefined) => DialogAction;
-    static CancelAction: (func: DialogActionCallback | null | undefined) => DialogAction;
+    static Action: (label?: React.ReactNode, func?: DialogActionCallback | null | undefined, className?: string | null | undefined, key?: string | null | undefined) => DialogAction;
+    static DefaultAction: (label?: React.ReactNode, func?: DialogActionCallback | null | undefined, className?: string | null | undefined) => DialogAction;
+    static OKAction: (func?: DialogActionCallback | null | undefined) => DialogAction;
+    static CancelAction: (func?: DialogActionCallback | null | undefined) => DialogAction;
     static SingleOKAction: () => DialogAction;
     static TextPrompt: (options: DialogPromptOptions) => TextPrompt;
     static PasswordPrompt: (options: DialogPromptOptions) => PasswordPrompt;

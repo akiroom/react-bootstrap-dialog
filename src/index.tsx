@@ -78,10 +78,10 @@ export default class Dialog extends React.Component <Props, State> {
   promptInput: PromptInput | null = null
   keyBinds: DialogKeyBinds |  null = {}
 
-  static Action = (label: DialogActionLabel | null | undefined, func: DialogActionCallback | null | undefined, className: string | null | undefined, key: DialogActionKey) => new DialogAction(label, func, className, key)
-  static DefaultAction = (label: DialogActionLabel | null | undefined, func: DialogActionCallback | null | undefined, className: string | null | undefined) => new DialogAction(label, func, className && className.length > 0 ? className : Dialog.options.primaryClassName, 'enter')
-  static OKAction = (func: DialogActionCallback | null | undefined) => new DialogAction(Dialog.options.defaultOkLabel, (dialog) => { dialog.hide(); func && func(dialog) }, Dialog.options.primaryClassName, 'enter')
-  static CancelAction = (func: DialogActionCallback | null | undefined) => new DialogAction(Dialog.options.defaultCancelLabel, (dialog) => { dialog.hide(); func && func(dialog) }, null, 'esc')
+  static Action = (label?: DialogActionLabel | null, func?: DialogActionCallback | null, className?: string | null, key?: DialogActionKey | null) => new DialogAction(label, func, className, key)
+  static DefaultAction = (label?: DialogActionLabel | null, func?: DialogActionCallback | null, className?: string | null) => new DialogAction(label, func, className && className.length > 0 ? className : Dialog.options.primaryClassName, 'enter')
+  static OKAction = (func?: DialogActionCallback | null) => new DialogAction(Dialog.options.defaultOkLabel, (dialog) => { dialog.hide(); func && func(dialog) }, Dialog.options.primaryClassName, 'enter')
+  static CancelAction = (func?: DialogActionCallback | null) => new DialogAction(Dialog.options.defaultCancelLabel, (dialog) => { dialog.hide(); func && func(dialog) }, null, 'esc')
   static SingleOKAction = () => new DialogAction(Dialog.options.defaultOkLabel, (dialog) => { dialog.hide() }, Dialog.options.primaryClassName, 'enter,esc')
 
   static TextPrompt = (options: DialogPromptOptions) => new TextPrompt(options)
