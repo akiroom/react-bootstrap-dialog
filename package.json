@@ -26,8 +26,8 @@
     "storybook": "start-storybook -p 6006",
     "publish-storybook": "bash .scripts/publish_storybook.sh",
     "deploy-storybook": "storybook-to-ghpages",
-
-    "build": "tsc && build-storybook",
+    "build-storybook": "build-storybook",
+    "build": "tsc",
     "lint": "eslint ./src/**.tsx",
     "lint:fix": "yarn run lint --fix"
   },
