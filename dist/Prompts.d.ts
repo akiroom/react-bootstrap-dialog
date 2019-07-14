@@ -1,6 +1,7 @@
 export interface DialogPromptOptions {
     initialValue?: string;
     placeholder?: string;
+    required?: boolean;
 }
 /**
  * The class to represent prompt options
@@ -8,6 +9,7 @@ export interface DialogPromptOptions {
 export declare class DialogPrompt {
     initialValue?: string;
     placeholder?: string;
+    required?: boolean;
     constructor(options?: DialogPromptOptions);
 }
 /**

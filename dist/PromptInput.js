@@ -22,13 +22,14 @@ var PromptInput = /** @class */ (function (_super) {
     __extends(PromptInput, _super);
     function PromptInput(props) {
         var _this = _super.call(this, props) || this;
+        _this.formElement = null;
+        _this.inputElement = null;
         var _a = props.prompt, initialValue = _a.initialValue, placeholder = _a.placeholder;
         _this.state = {
             value: initialValue || '',
             initialValue: initialValue,
             placeholder: placeholder
         };
-        _this.inputElement = null;
         _this.onSubmit = _this.onSubmit.bind(_this);
         return _this;
     }
@@ -45,8 +46,21 @@ var PromptInput = /** @class */ (function (_super) {
         enumerable: true,
         configurable: true
     });
+    PromptInput.prototype.checkValidity = function () {
+        var formElement = this.formElement;
+        if (formElement) {
+            if (!formElement.checkValidity()) {
+                formElement.reportValidity();
+                return false;
+            }
+        }
+        return true;
+    };
     PromptInput.prototype.onSubmit = function (e) {
         e.preventDefault();
+        if (!this.checkValidity()) {
+            return false;
+        }
         this.props.onSubmit && this.props.onSubmit();
         return false;
     };
@@ -55,8 +69,8 @@ var PromptInput = /** @class */ (function (_super) {
         var prompt = this.props.prompt;
         var _a = this.state, value = _a.value, placeholder = _a.placeholder;
         var type = (prompt instanceof Prompts_1.PasswordPrompt) ? 'password' : 'text';
-        return (react_1.default.createElement("form", { onSubmit: this.onSubmit },
-            react_1.default.createElement("input", { ref: function (el) { _this.inputElement = el; }, type: type, className: 'form-control', value: value, placeholder: placeholder, onChange: function (e) { return _this.setState({ value: e.target.value }); }, autoFocus: true })));
+        return (react_1.default.createElement("form", { ref: function (el) { _this.formElement = el; }, onSubmit: this.onSubmit },
+            react_1.default.createElement("input", { ref: function (el) { _this.inputElement = el; }, type: type, className: 'form-control', value: value, placeholder: placeholder, onChange: function (e) { return _this.setState({ value: e.target.value }); }, required: prompt.required, autoFocus: true })));
     };
     return PromptInput;
 }(react_1.default.Component));

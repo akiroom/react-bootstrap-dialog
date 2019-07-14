@@ -19,9 +19,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var DialogPrompt = /** @class */ (function () {
     function DialogPrompt(options) {
         if (options === void 0) { options = {}; }
-        var initialValue = options.initialValue, placeholder = options.placeholder;
+        var initialValue = options.initialValue, placeholder = options.placeholder, required = options.required;
         this.initialValue = initialValue;
         this.placeholder = placeholder;
+        this.required = required;
     }
     return DialogPrompt;
 }());

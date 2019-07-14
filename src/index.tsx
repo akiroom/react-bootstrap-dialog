@@ -148,7 +148,7 @@ export default class Dialog extends React.Component <Props, State> {
     // Execute validation at first.
     if (actions && prompt) {
       newOptions.actions = actions.map((action) => {
-        const { label, className, key, _func } = action
+        const { key } = action
         if (!(key && key.includes('enter'))) {
           // Not enter button, so return
           return action
