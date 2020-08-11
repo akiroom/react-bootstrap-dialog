@@ -37,7 +37,7 @@ Index:
 ## Demo and Sample
 
 - See [Demos on storybook](https://akiroom.github.io/react-bootstrap-dialog/)
-- The sample codes are in [/src/stories/samples](https://github.com/akiroom/react-bootstrap-dialog/tree/master/src/stories/samples)
+- The sample codes are in [/stories/stories](https://github.com/akiroom/react-bootstrap-dialog/tree/master/stories/stories)
 
 ## Usage
 
