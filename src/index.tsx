@@ -240,7 +240,7 @@ export default class Dialog extends React.Component <Props, State> {
     return (typeof this.state.bsSize) === 'undefined' ? defaultSize : (this.state.bsSize === 'medium' ? null : this.state.bsSize)
   }
 
-  render () {
+  render (): React.ReactNode {
     const additionalProps = (
       isLaterV4 ? {
         size: this.getSize('sm')
