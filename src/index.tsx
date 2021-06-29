@@ -50,6 +50,7 @@ export interface DialogOptions {
 
  */
 interface Props {
+  centered?: boolean;
 }
 interface State {
   title?: DialogTitle | null;
@@ -249,7 +250,7 @@ export default class Dialog extends React.Component <Props, State> {
       }
     )
     return (
-      <Modal show={this.state.showModal} onHide={this.onHide} {...additionalProps}>
+      <Modal show={this.state.showModal} onHide={this.onHide} centered={this.props.centered} {...additionalProps}>
         {
           this.state.title && (
             <Modal.Header>
