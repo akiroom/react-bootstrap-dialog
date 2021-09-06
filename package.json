@@ -39,7 +39,7 @@
     "@kadira/storybook-deployer": "^1.2.0",
     "@storybook/addon-actions": "^5.1.9",
     "@storybook/addon-info": "^5.1.9",
-    "@storybook/addon-links": "^5.1.9",
+    "@storybook/addon-links": "^6.3.8",
     "@storybook/addons": "^5.1.9",
     "@storybook/react": "^5.1.9",
     "@types/react": "^16.8.23",
